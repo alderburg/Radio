@@ -32,8 +32,15 @@ export default function Home() {
   return (
     <div className="min-h-screen pb-32">
       <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="Aperte o Play FM" className="w-full h-full object-cover object-center" style={{ objectPosition: 'center' }} />
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
           <div className="absolute inset-0 bg-gradient-to-r from-gradient-start/20 to-gradient-end/20" />
         </div>
         
@@ -45,9 +52,9 @@ export default function Home() {
             A Rádio que Conecta Você!
           </p>
           <div className="flex flex-col items-center gap-4">
-            <div className="inline-flex items-center gap-3 bg-black/40 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-              <Radio className="h-6 w-6 text-white" />
-              <span className="text-3xl font-bold text-white" data-testid="text-frequency">87.9 MHz</span>
+            <div className="inline-flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <Radio className="h-5 w-5 text-white" />
+              <span className="text-2xl font-bold text-white" data-testid="text-frequency">87.9 MHz</span>
             </div>
             <Link href="/ao-vivo">
               <Button size="lg" className="bg-purple-600 text-white hover:bg-purple-700 flex items-center gap-2" data-testid="button-listen-live">
