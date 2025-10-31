@@ -36,7 +36,7 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-border transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
           ? 'bg-background/95 backdrop-blur-lg' 
           : 'bg-transparent backdrop-blur-sm'
@@ -45,7 +45,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3">
-            <img src="/logo-aperte-play.png" alt="Aperte o Play FM" className="h-12 w-auto" data-testid="img-logo" />
+            <img src="/client/public/logo-aperte-play.png" alt="Aperte o Play FM" className="h-12 w-auto" data-testid="img-logo" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -113,7 +113,7 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-border">
+        <div className="lg:hidden">
           <nav className="px-4 py-4 space-y-1">
             {navItems.map((item) => (
               <Link key={item.path} href={item.path}>
