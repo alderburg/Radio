@@ -110,11 +110,11 @@ export default function Header() {
           <Button
             size="icon"
             variant="ghost"
-            className="lg:hidden hover-elevate active-elevate-2"
+            className="lg:hidden hover-elevate active-elevate-2 bg-purple-600 rounded-md hover:bg-purple-700"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             data-testid="button-mobile-menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? <X className="h-6 w-6 text-white" /> : <Menu className="h-6 w-6 text-white" />}
           </Button>
         </div>
       </div>
