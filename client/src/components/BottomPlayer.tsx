@@ -8,7 +8,7 @@ export default function BottomPlayer() {
   const { isPlaying, volume, currentProgram, togglePlay, setVolume } = useAudioPlayer();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-card/95 backdrop-blur-lg border-t border-card-border rounded-t-xl">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-card/95 backdrop-blur-lg border-t border-card-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3 flex-1 min-w-0">
