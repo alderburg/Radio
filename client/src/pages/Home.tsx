@@ -605,8 +605,8 @@ export default function Home() {
                 <li className="flex items-start gap-2">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs">Rua Barao do Rio Branco, N°424</p>
-                    <p className="text-xs">Pinheiro Machado, RS - 96470000</p>
+                    <p className="text-xs">Rua Barão do Rio Branco, 424 - Centro</p>
+                    <p className="text-xs">Pinheiro Machado, RS - 96470-000</p>
                   </div>
                 </li>
                 <li className="flex items-center gap-2">
