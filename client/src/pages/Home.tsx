@@ -138,8 +138,8 @@ export default function Home() {
             </motion.h2>
           </motion.div>
           
-          <div className="relative px-12">
-            <div className="overflow-hidden" ref={emblaRef}>
+          <div className="relative">
+            <div className="overflow-hidden px-12" ref={emblaRef}>
               <div className="flex -ml-6">
                 {featuredPrograms.map((program, index) => (
                   <div 
@@ -152,25 +152,29 @@ export default function Home() {
               </div>
             </div>
 
-            <Button
-              size="icon"
-              variant="outline"
-              className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 bg-slate-950/90 border-indigo-500/40 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)] hover:shadow-[0_0_32px_rgba(99,102,241,0.8)]"
-              onClick={scrollPrev}
-              data-testid="button-carousel-prev"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </Button>
+            <div className="absolute left-0 top-0 bottom-0 flex items-center z-10">
+              <Button
+                size="icon"
+                variant="outline"
+                className="bg-slate-950/90 border-indigo-500/40 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)] hover:shadow-[0_0_32px_rgba(99,102,241,0.8)]"
+                onClick={scrollPrev}
+                data-testid="button-carousel-prev"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </Button>
+            </div>
 
-            <Button
-              size="icon"
-              variant="outline"
-              className="absolute -right-2 top-1/2 -translate-y-1/2 z-10 bg-slate-950/90 border-indigo-500/40 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)] hover:shadow-[0_0_32px_rgba(99,102,241,0.8)]"
-              onClick={scrollNext}
-              data-testid="button-carousel-next"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </Button>
+            <div className="absolute right-0 top-0 bottom-0 flex items-center z-10">
+              <Button
+                size="icon"
+                variant="outline"
+                className="bg-slate-950/90 border-indigo-500/40 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)] hover:shadow-[0_0_32px_rgba(99,102,241,0.8)]"
+                onClick={scrollNext}
+                data-testid="button-carousel-next"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
