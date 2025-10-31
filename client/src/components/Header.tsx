@@ -37,13 +37,32 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-hidden ${
         scrolled 
-          ? 'bg-background/95 backdrop-blur-lg' 
+          ? 'bg-gradient-to-b from-slate-950 via-indigo-950 to-slate-900 border-b border-indigo-500/30 shadow-[0_8px_32px_rgba(99,102,241,0.4),0_4px_16px_rgba(168,85,247,0.3)]' 
           : 'bg-transparent backdrop-blur-sm'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {scrolled && (
+        <>
+          {/* Borda inferior brilhante */}
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400 to-transparent" />
+          
+          {/* Efeito de brilho animado */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent animate-[shimmer_4s_ease-in-out_infinite]" 
+               style={{
+                 backgroundSize: '200% 100%',
+                 animation: 'shimmer 4s ease-in-out infinite'
+               }} 
+          />
+          
+          {/* Pontos de luz decorativos */}
+          <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        </>
+      )}
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3">
             <img 
