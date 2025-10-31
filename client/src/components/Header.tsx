@@ -36,10 +36,11 @@ export default function Header() {
   const isActive = (path: string) => location === path;
 
   return (
+    <>
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 overflow-hidden ${
+      className={`fixed top-0 left-0 right-0 z-50 ${
         scrolled 
-          ? 'bg-gradient-to-b from-slate-950 via-indigo-950 to-slate-900 border-b border-indigo-500/30 shadow-[0_8px_32px_rgba(99,102,241,0.4),0_4px_16px_rgba(168,85,247,0.3)]' 
+          ? 'bg-gradient-to-b from-slate-950 via-indigo-950 to-slate-900 border-b border-indigo-500/30 shadow-[0_8px_32px_rgba(99,102,241,0.4),0_4px_16px_rgba(168,85,247,0.3)] overflow-hidden' 
           : 'bg-transparent backdrop-blur-sm'
       }`}
     >
@@ -141,41 +142,43 @@ export default function Header() {
         </div>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-20 z-[60]">
-          <div className="mx-4 my-2 bg-gradient-to-t from-slate-950 via-indigo-950 to-slate-900 rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(99,102,241,0.4),0_4px_16px_rgba(168,85,247,0.3)] border border-indigo-500/30 relative">
-            {/* Borda superior brilhante */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400 to-transparent" />
-            
-            {/* Efeito de brilho animado */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent animate-[shimmer_4s_ease-in-out_infinite]" 
-                 style={{
-                   backgroundSize: '200% 100%',
-                   animation: 'shimmer 4s ease-in-out infinite'
-                 }} 
-            />
-            
-            {/* Pontos de luz decorativos */}
-            <div className="absolute top-0 left-1/4 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute top-0 right-1/4 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-            
-            <nav className="px-4 py-4 space-y-1 relative z-10">
-              {navItems.map((item) => (
-                <Link key={item.path} href={item.path}>
-                  <Button
-                    variant={isActive(item.path) ? 'secondary' : 'ghost'}
-                    className="w-full justify-start hover-elevate active-elevate-2 text-white"
-                    onClick={() => setMobileMenuOpen(false)}
-                    data-testid={`link-mobile-${item.label.toLowerCase()}`}
-                  >
-                    {item.label}
-                  </Button>
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </div>
-      )}
     </header>
+
+    {mobileMenuOpen && (
+      <div className="lg:hidden fixed inset-x-0 top-20 z-[60]">
+        <div className="mx-4 my-2 bg-gradient-to-t from-slate-950 via-indigo-950 to-slate-900 rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(99,102,241,0.4),0_4px_16px_rgba(168,85,247,0.3)] border border-indigo-500/30 relative">
+          {/* Borda superior brilhante */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400 to-transparent" />
+          
+          {/* Efeito de brilho animado */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent animate-[shimmer_4s_ease-in-out_infinite]" 
+               style={{
+                 backgroundSize: '200% 100%',
+                 animation: 'shimmer 4s ease-in-out infinite'
+               }} 
+          />
+          
+          {/* Pontos de luz decorativos */}
+          <div className="absolute top-0 left-1/4 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute top-0 right-1/4 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          
+          <nav className="px-4 py-4 space-y-1 relative z-10">
+            {navItems.map((item) => (
+              <Link key={item.path} href={item.path}>
+                <Button
+                  variant={isActive(item.path) ? 'secondary' : 'ghost'}
+                  className="w-full justify-start hover-elevate active-elevate-2 text-white"
+                  onClick={() => setMobileMenuOpen(false)}
+                  data-testid={`link-mobile-${item.label.toLowerCase()}`}
+                >
+                  {item.label}
+                </Button>
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
