@@ -138,13 +138,13 @@ export default function Home() {
             </motion.h2>
           </motion.div>
           
-          <div className="relative">
-            <div className="overflow-hidden px-12" ref={emblaRef}>
-              <div className="flex -ml-6">
+          <div className="relative max-w-6xl mx-auto">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex gap-6">
                 {featuredPrograms.map((program, index) => (
                   <div 
                     key={index} 
-                    className="flex-[0_0_100%] min-w-0 pl-6 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                    className="flex-[0_0_100%] min-w-0 md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)]"
                   >
                     <ProgramCard {...program} />
                   </div>
@@ -152,7 +152,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="absolute left-0 top-0 bottom-0 flex items-center z-10">
+            <div className="absolute left-0 top-0 bottom-0 flex items-center z-10 -ml-4">
               <Button
                 size="icon"
                 variant="outline"
@@ -164,7 +164,7 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="absolute right-0 top-0 bottom-0 flex items-center z-10">
+            <div className="absolute right-0 top-0 bottom-0 flex items-center z-10 -mr-4">
               <Button
                 size="icon"
                 variant="outline"
@@ -179,8 +179,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-16 px-4 bg-slate-900/50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/30 to-slate-900/30"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-4xl font-bold mb-6" data-testid="text-about-title">Sobre Nós</h2>
           <p className="text-lg text-muted-foreground mb-8" data-testid="text-about-content">
             A Aperte o Play FM 87.9 é mais do que uma rádio - somos uma comunidade que conecta pessoas através da música, 
