@@ -436,85 +436,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12" data-testid="text-contact-title">Contato / Redes Sociais</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Entre em Contato</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold">Endereço</p>
-                    <p className="text-muted-foreground">Rua da Rádio, 879 - Centro<br />Cidade, Estado - CEP 12345-678</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold">E-mail</p>
-                    <p className="text-muted-foreground">contato@aperteplayfm.com.br</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold">Telefone</p>
-                    <p className="text-muted-foreground">(11) 98765-4321</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Clock className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold">Horário de Atendimento</p>
-                    <p className="text-muted-foreground">Segunda a Sexta: 8h às 18h<br />Sábado: 9h às 13h</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Siga-nos nas Redes</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                  <Card className="p-6 hover-elevate transition-all duration-300 cursor-pointer text-center">
-                    <Instagram className="h-8 w-8 mx-auto mb-3 text-pink-500" />
-                    <p className="font-semibold">Instagram</p>
-                    <p className="text-sm text-muted-foreground">@aperteplayfm</p>
-                  </Card>
-                </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                  <Card className="p-6 hover-elevate transition-all duration-300 cursor-pointer text-center">
-                    <Facebook className="h-8 w-8 mx-auto mb-3 text-blue-500" />
-                    <p className="font-semibold">Facebook</p>
-                    <p className="text-sm text-muted-foreground">/aperteplayfm</p>
-                  </Card>
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                  <Card className="p-6 hover-elevate transition-all duration-300 cursor-pointer text-center">
-                    <Youtube className="h-8 w-8 mx-auto mb-3 text-red-500" />
-                    <p className="font-semibold">YouTube</p>
-                    <p className="text-sm text-muted-foreground">Aperte o Play FM</p>
-                  </Card>
-                </a>
-                <a href="https://wa.me/5511987654321" target="_blank" rel="noopener noreferrer">
-                  <Card className="p-6 hover-elevate transition-all duration-300 cursor-pointer text-center">
-                    <MessageCircle className="h-8 w-8 mx-auto mb-3 text-green-500" />
-                    <p className="font-semibold">WhatsApp</p>
-                    <p className="text-sm text-muted-foreground">(11) 98765-4321</p>
-                  </Card>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <footer className="bg-slate-950 border-t border-slate-800 py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div>
               <h3 className="text-xl font-bold mb-4">Aperte o Play FM</h3>
               <p className="text-muted-foreground mb-4">
@@ -540,20 +464,52 @@ export default function Home() {
 
             <div>
               <h4 className="text-lg font-semibold mb-4">Contato</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  <span className="text-sm">contato@aperteplayfm.com.br</span>
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm">Rua da Rádio, 879 - Centro</p>
+                    <p className="text-sm">Cidade, Estado - CEP 12345-678</p>
+                  </div>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
-                  <span className="text-sm">(11) 98765-4321</span>
+                  <Mail className="h-4 w-4 flex-shrink-0" />
+                  <a href="mailto:contato@aperteplayfm.com.br" className="text-sm hover:text-primary transition-colors">contato@aperteplayfm.com.br</a>
                 </li>
                 <li className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  <span className="text-sm">Rua da Rádio, 879 - Centro</span>
+                  <Phone className="h-4 w-4 flex-shrink-0" />
+                  <a href="tel:+5511987654321" className="text-sm hover:text-primary transition-colors">(11) 98765-4321</a>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Clock className="h-4 w-4 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm">Seg-Sex: 8h às 18h</p>
+                    <p className="text-sm">Sábado: 9h às 13h</p>
+                  </div>
                 </li>
               </ul>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Redes Sociais</h4>
+              <div className="flex flex-wrap gap-3 mb-4">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-pink-600/20 hover:bg-pink-600/30 transition-colors">
+                  <Instagram className="h-5 w-5 text-pink-400" />
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors">
+                  <Facebook className="h-5 w-5 text-blue-400" />
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-red-600/20 hover:bg-red-600/30 transition-colors">
+                  <Youtube className="h-5 w-5 text-red-400" />
+                </a>
+                <a href="https://wa.me/5511987654321" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-green-600/20 hover:bg-green-600/30 transition-colors">
+                  <MessageCircle className="h-5 w-5 text-green-400" />
+                </a>
+              </div>
+              <div className="space-y-1 text-sm text-muted-foreground">
+                <p>@aperteplayfm</p>
+                <p>/aperteplayfm</p>
+              </div>
             </div>
           </div>
 
