@@ -12,11 +12,17 @@ import eveningShowImage from '@assets/generated_images/Evening_music_show_concep
 import nightShowImage from '@assets/generated_images/Night_talk_show_setup_5b9e5b4a.png';
 import newsImage from '@assets/generated_images/News_bulletin_backdrop_image_ad8d9119.png';
 import eventImage from '@assets/generated_images/Community_event_coverage_photo_27c09e1a.png';
-import supporterImage from '@assets/generated_images/Supporter_logo_placeholder_5f468ddb.png';
 import logoColor from '/logo-aperte-play-color.png?url';
+import sponsor1 from '@assets/stock_images/company_brand_logos__ff725cae.jpg';
+import sponsor2 from '@assets/stock_images/company_brand_logos__f6b03a09.jpg';
+import sponsor3 from '@assets/stock_images/company_brand_logos__8cc00b67.jpg';
+import sponsor4 from '@assets/stock_images/company_brand_logos__c01c0461.jpg';
+import sponsor5 from '@assets/stock_images/company_brand_logos__1e41b510.jpg';
+import sponsor6 from '@assets/stock_images/company_brand_logos__431445f0.jpg';
 
 export default function Home() {
-  const [currentSupporterSlide, setCurrentSupporterSlide] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: false,
@@ -24,6 +30,52 @@ export default function Home() {
     slidesToScroll: 1,
     duration: 40
   });
+
+  const [supportersEmblaRef, supportersEmblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1,
+    duration: 40
+  });
+
+  const imagesToPreload = [
+    heroImage,
+    morningShowImage,
+    eveningShowImage,
+    nightShowImage,
+    newsImage,
+    eventImage,
+    sponsor1,
+    sponsor2,
+    sponsor3,
+    sponsor4,
+    sponsor5,
+    sponsor6,
+  ];
+
+  useEffect(() => {
+    let loadedCount = 0;
+    const totalImages = imagesToPreload.length;
+
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loadedCount++;
+        setImagesLoaded(loadedCount);
+        if (loadedCount === totalImages) {
+          setTimeout(() => setIsLoading(false), 500);
+        }
+      };
+      img.onerror = () => {
+        loadedCount++;
+        setImagesLoaded(loadedCount);
+        if (loadedCount === totalImages) {
+          setTimeout(() => setIsLoading(false), 500);
+        }
+      };
+    });
+  }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -39,6 +91,20 @@ export default function Home() {
     return () => clearInterval(autoplay);
   }, [emblaApi]);
 
+  useEffect(() => {
+    if (!supportersEmblaApi) return;
+
+    const autoplay = setInterval(() => {
+      if (supportersEmblaApi.canScrollNext()) {
+        supportersEmblaApi.scrollNext();
+      } else {
+        supportersEmblaApi.scrollTo(0);
+      }
+    }, 4000);
+
+    return () => clearInterval(autoplay);
+  }, [supportersEmblaApi]);
+
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
@@ -46,6 +112,14 @@ export default function Home() {
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
+
+  const scrollSupportersPrev = useCallback(() => {
+    if (supportersEmblaApi) supportersEmblaApi.scrollPrev();
+  }, [supportersEmblaApi]);
+
+  const scrollSupportersNext = useCallback(() => {
+    if (supportersEmblaApi) supportersEmblaApi.scrollNext();
+  }, [supportersEmblaApi]);
 
   const featuredPrograms = [
     {
@@ -104,18 +178,35 @@ export default function Home() {
     },
   ];
 
-  const supporters = Array.from({ length: 6 }, (_, i) => ({
-    id: i + 1,
-    name: `Apoiador ${i + 1}`,
-    image: supporterImage,
-  }));
+  const supporters = [
+    { id: 1, name: 'Apoiador 1', image: sponsor1 },
+    { id: 2, name: 'Apoiador 2', image: sponsor2 },
+    { id: 3, name: 'Apoiador 3', image: sponsor3 },
+    { id: 4, name: 'Apoiador 4', image: sponsor4 },
+    { id: 5, name: 'Apoiador 5', image: sponsor5 },
+    { id: 6, name: 'Apoiador 6', image: sponsor6 },
+  ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSupporterSlide((prev) => (prev + 1) % supporters.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [supporters.length]);
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
+        <div className="mb-8">
+          <img 
+            src={logoColor} 
+            alt="Aperte o Play FM" 
+            className="h-32 w-auto animate-pulse" 
+          />
+        </div>
+        <div className="w-64 h-2 bg-slate-800 rounded-full overflow-hidden">
+          <div 
+            className="h-full bg-gradient-to-r from-purple-600 to-blue-500 transition-all duration-300 ease-out"
+            style={{ width: `${(imagesLoaded / imagesToPreload.length) * 100}%` }}
+          />
+        </div>
+        <p className="text-white mt-4 text-sm">Carregando... {Math.round((imagesLoaded / imagesToPreload.length) * 100)}%</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen pb-20">
@@ -228,7 +319,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-gradient-to-br from-slate-900/50 to-slate-800/30">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="flex items-start gap-4 mb-12 md:justify-center"
@@ -238,7 +329,7 @@ export default function Home() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.div 
-              className="w-2 bg-gradient-to-b from-red-500 via-pink-500 to-purple-600 rounded-full md:hidden flex-shrink-0 shadow-[0_0_24px_rgba(239,68,68,0.8),0_0_12px_rgba(236,72,153,0.6)] self-stretch" 
+              className="w-2 bg-gradient-to-b from-green-500 via-emerald-500 to-teal-600 rounded-full md:hidden flex-shrink-0 shadow-[0_0_24px_rgba(34,197,94,0.8),0_0_12px_rgba(20,184,166,0.6)] self-stretch" 
               style={{ minWidth: '8px' }}
               initial={{ scaleY: 0, opacity: 0 }}
               whileInView={{ scaleY: 1, opacity: 1 }}
@@ -253,29 +344,52 @@ export default function Home() {
               viewport={{ once: true, margin: "-120px 0px -120px 0px" }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             >
-              Ao Vivo / Agora no Ar
+              Agora no Ar
             </motion.h2>
           </motion.div>
 
-          <Card className="max-w-2xl mx-auto bg-gradient-to-br from-red-950/30 to-pink-950/30 border-red-500/30 overflow-hidden">
-            <div className="p-8 text-center">
-              <div className="inline-flex items-center gap-2 bg-red-600/20 backdrop-blur-md px-4 py-2 rounded-full border border-red-500/30 mb-6">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                </span>
-                <span className="text-sm font-semibold text-red-300">AO VIVO</span>
+          <div className="max-w-5xl mx-auto">
+            <Card className="bg-gradient-to-br from-slate-900/80 to-slate-800/80 border-emerald-500/30 overflow-hidden backdrop-blur-sm">
+              <div className="grid md:grid-cols-2 gap-6 p-8">
+                <div className="flex flex-col justify-center">
+                  <div className="inline-flex items-center gap-2 bg-emerald-600/20 backdrop-blur-md px-4 py-2 rounded-full border border-emerald-500/40 mb-6 w-fit">
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                    </span>
+                    <span className="text-sm font-semibold text-emerald-300">AO VIVO</span>
+                  </div>
+                  <h3 className="text-4xl font-bold mb-3 bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent" data-testid="text-current-program">Café da Manhã</h3>
+                  <p className="text-lg text-slate-300 mb-6">Com as melhores músicas para começar o seu dia!</p>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="flex items-center gap-2 text-emerald-400">
+                      <Radio className="h-5 w-5" />
+                      <span className="font-semibold">87.9 MHz</span>
+                    </div>
+                    <div className="h-1 w-1 rounded-full bg-slate-600"></div>
+                    <div className="flex items-center gap-2 text-slate-400">
+                      <Clock className="h-4 w-4" />
+                      <span className="text-sm">07:00 - 10:00</span>
+                    </div>
+                  </div>
+                  <Link href="/ao-vivo">
+                    <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg shadow-emerald-900/50" data-testid="button-go-live">
+                      <Play className="mr-2 h-5 w-5" />
+                      Ouvir Agora
+                    </Button>
+                  </Link>
+                </div>
+                <div className="relative rounded-xl overflow-hidden aspect-square md:aspect-auto">
+                  <img 
+                    src={morningShowImage} 
+                    alt="Programa ao vivo"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
               </div>
-              <h3 className="text-3xl font-bold mb-2" data-testid="text-current-program">Café da Manhã</h3>
-              <p className="text-lg text-muted-foreground mb-6">Com as melhores músicas para começar o seu dia!</p>
-              <Link href="/ao-vivo">
-                <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white" data-testid="button-go-live">
-                  <Play className="mr-2 h-5 w-5" />
-                  Ouvir Ao Vivo
-                </Button>
-              </Link>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -361,14 +475,14 @@ export default function Home() {
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div 
-            className="flex items-start gap-4 mb-8 md:justify-center"
+            className="flex items-start gap-4 mb-12 md:justify-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-120px 0px -120px 0px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.div 
-              className="w-2 bg-gradient-to-b from-yellow-500 via-orange-500 to-red-600 rounded-full md:hidden flex-shrink-0 shadow-[0_0_24px_rgba(234,179,8,0.8),0_0_12px_rgba(249,115,22,0.6)] self-stretch" 
+              className="w-2 bg-gradient-to-b from-amber-500 via-orange-500 to-red-600 rounded-full md:hidden flex-shrink-0 shadow-[0_0_24px_rgba(245,158,11,0.8),0_0_12px_rgba(249,115,22,0.6)] self-stretch" 
               style={{ minWidth: '8px' }}
               initial={{ scaleY: 0, opacity: 0 }}
               whileInView={{ scaleY: 1, opacity: 1 }}
@@ -383,29 +497,53 @@ export default function Home() {
               viewport={{ once: true, margin: "-120px 0px -120px 0px" }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             >
-              Nossos Apoiadores Mantêm o Som no Ar 🎵
+              Nossos Apoiadores
             </motion.h2>
           </motion.div>
 
-          <div className="relative max-w-4xl mx-auto mb-8">
-            <div className="aspect-[2/1] relative overflow-hidden rounded-xl">
-              {supporters.map((supporter, index) => (
-                <div
-                  key={supporter.id}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    index === currentSupporterSlide ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
-                  <Card className="h-full flex items-center justify-center p-8">
-                    <img
-                      src={supporter.image}
-                      alt={supporter.name}
-                      className="max-h-full max-w-full object-contain"
-                      data-testid={`img-supporter-${supporter.id}`}
-                    />
-                  </Card>
-                </div>
-              ))}
+          <div className="relative max-w-6xl mx-auto mb-8">
+            <div className="overflow-hidden" ref={supportersEmblaRef}>
+              <div className="flex gap-6">
+                {supporters.map((supporter) => (
+                  <div 
+                    key={supporter.id} 
+                    className="flex-[0_0_100%] min-w-0 md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)]"
+                  >
+                    <Card className="h-64 flex items-center justify-center p-8 bg-slate-900/50 border-slate-700/50 hover-elevate transition-all duration-300">
+                      <img
+                        src={supporter.image}
+                        alt={supporter.name}
+                        className="max-h-full max-w-full object-contain"
+                        data-testid={`img-supporter-${supporter.id}`}
+                      />
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="absolute left-0 top-0 bottom-0 flex items-center z-10 -ml-4">
+              <Button
+                size="icon"
+                variant="outline"
+                className="bg-slate-950/90 border-orange-500/40 hover:bg-orange-950 shadow-[0_0_24px_rgba(249,115,22,0.6)] hover:shadow-[0_0_32px_rgba(249,115,22,0.8)]"
+                onClick={scrollSupportersPrev}
+                data-testid="button-supporters-carousel-prev"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </Button>
+            </div>
+
+            <div className="absolute right-0 top-0 bottom-0 flex items-center z-10 -mr-4">
+              <Button
+                size="icon"
+                variant="outline"
+                className="bg-slate-950/90 border-orange-500/40 hover:bg-orange-950 shadow-[0_0_24px_rgba(249,115,22,0.6)] hover:shadow-[0_0_32px_rgba(249,115,22,0.8)]"
+                onClick={scrollSupportersNext}
+                data-testid="button-supporters-carousel-next"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </Button>
             </div>
           </div>
 
@@ -417,19 +555,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pt-16 pb-0 px-4 bg-gradient-to-br from-purple-950/30 to-pink-950/30 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/50 to-pink-950/50"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10 pb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-pink-600/20 rounded-full mb-6">
-            <Heart className="h-8 w-8 text-pink-400" />
+      <section className="pt-16 pb-8 px-4 bg-gradient-to-br from-indigo-950/40 to-blue-950/40 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/30 to-blue-950/30"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600/20 rounded-full mb-6 border border-blue-500/30">
+            <Heart className="h-8 w-8 text-blue-400" />
           </div>
           <h2 className="text-4xl font-bold mb-6" data-testid="text-support-call-title">Ajude a Manter a Rádio no Ar</h2>
-          <p className="text-lg text-muted-foreground mb-8" data-testid="text-support-call-description">
+          <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto" data-testid="text-support-call-description">
             Sua contribuição é essencial para continuarmos levando música, informação e entretenimento de qualidade. 
             Cada apoio, independente do valor, faz a diferença!
           </p>
           <Link href="/apoie">
-            <Button size="lg" className="bg-pink-600 hover:bg-pink-700 text-white" data-testid="button-support-call">
+            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg shadow-blue-900/50" data-testid="button-support-call">
               <Heart className="mr-2 h-5 w-5" />
               Quero Apoiar a Rádio
             </Button>
@@ -437,89 +575,88 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-slate-950 border-t border-slate-800 py-12 px-4">
+      <footer className="bg-slate-950 border-t border-slate-800 py-8 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6">
             <div>
               <img 
                 src={logoColor} 
                 alt="Aperte o Play FM" 
-                className="h-24 w-auto mb-4" 
+                className="h-20 w-auto mb-3" 
               />
-              <p className="text-muted-foreground mb-4">
+              <p className="text-muted-foreground mb-3 text-sm">
                 A rádio que conecta você com música, informação e entretenimento de qualidade 24 horas por dia.
               </p>
               <div className="flex items-center gap-2 text-primary">
-                <Radio className="h-5 w-5" />
-                <span className="text-xl font-bold">87.9 MHz</span>
+                <Radio className="h-4 w-4" />
+                <span className="text-lg font-bold">87.9 MHz</span>
               </div>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4">Links Rápidos</h4>
+              <h4 className="text-lg font-semibold mb-3">Links Rápidos</h4>
               <ul className="space-y-2">
-                <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
-                <li><Link href="/programacao" className="text-muted-foreground hover:text-primary transition-colors">Programação</Link></li>
-                <li><Link href="/ao-vivo" className="text-muted-foreground hover:text-primary transition-colors">Ao Vivo</Link></li>
-                <li><Link href="/noticias" className="text-muted-foreground hover:text-primary transition-colors">Notícias</Link></li>
-                <li><Link href="/apoiadores" className="text-muted-foreground hover:text-primary transition-colors">Apoiadores</Link></li>
-                <li><Link href="/apoie" className="text-muted-foreground hover:text-primary transition-colors">Apoie</Link></li>
+                <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors text-sm">Home</Link></li>
+                <li><Link href="/programacao" className="text-muted-foreground hover:text-primary transition-colors text-sm">Programação</Link></li>
+                <li><Link href="/ao-vivo" className="text-muted-foreground hover:text-primary transition-colors text-sm">Ao Vivo</Link></li>
+                <li><Link href="/noticias" className="text-muted-foreground hover:text-primary transition-colors text-sm">Notícias</Link></li>
+                <li><Link href="/apoiadores" className="text-muted-foreground hover:text-primary transition-colors text-sm">Apoiadores</Link></li>
+                <li><Link href="/apoie" className="text-muted-foreground hover:text-primary transition-colors text-sm">Apoie</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4">Contato</h4>
-              <ul className="space-y-3 text-muted-foreground">
+              <h4 className="text-lg font-semibold mb-3">Contato</h4>
+              <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
+                  <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-sm">Rua da Rádio, 879 - Centro</p>
-                    <p className="text-sm">Cidade, Estado - CEP 12345-678</p>
+                    <p className="text-xs">Rua da Rádio, 879 - Centro</p>
+                    <p className="text-xs">Cidade, Estado - CEP 12345-678</p>
                   </div>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  <a href="mailto:contato@aperteplayfm.com.br" className="text-sm hover:text-primary transition-colors">contato@aperteplayfm.com.br</a>
+                  <a href="mailto:contato@aperteplayfm.com.br" className="text-xs hover:text-primary transition-colors">contato@aperteplayfm.com.br</a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="h-4 w-4 flex-shrink-0" />
-                  <a href="tel:+5511987654321" className="text-sm hover:text-primary transition-colors">(11) 98765-4321</a>
+                  <a href="tel:+5511987654321" className="text-xs hover:text-primary transition-colors">(11) 98765-4321</a>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Clock className="h-4 w-4 mt-1 flex-shrink-0" />
+                  <Clock className="h-4 w-4 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-sm">Seg-Sex: 8h às 18h</p>
-                    <p className="text-sm">Sábado: 9h às 13h</p>
+                    <p className="text-xs">Seg-Sex: 8h às 18h</p>
+                    <p className="text-xs">Sábado: 9h às 13h</p>
                   </div>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4">Redes Sociais</h4>
-              <div className="flex flex-wrap gap-3 mb-4">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-pink-600/20 hover:bg-pink-600/30 transition-colors">
-                  <Instagram className="h-5 w-5 text-pink-400" />
+              <h4 className="text-lg font-semibold mb-3">Redes Sociais</h4>
+              <div className="flex flex-wrap gap-3 mb-3">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 transition-colors border border-purple-500/20">
+                  <Instagram className="h-5 w-5 text-purple-400" />
                 </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors border border-blue-500/20">
                   <Facebook className="h-5 w-5 text-blue-400" />
                 </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-red-600/20 hover:bg-red-600/30 transition-colors">
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-red-600/20 hover:bg-red-600/30 transition-colors border border-red-500/20">
                   <Youtube className="h-5 w-5 text-red-400" />
                 </a>
-                <a href="https://wa.me/5511987654321" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-green-600/20 hover:bg-green-600/30 transition-colors">
+                <a href="https://wa.me/5511987654321" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-green-600/20 hover:bg-green-600/30 transition-colors border border-green-500/20">
                   <MessageCircle className="h-5 w-5 text-green-400" />
                 </a>
               </div>
-              <div className="space-y-1 text-sm text-muted-foreground">
-                <p>@aperteplayfm</p>
-                <p>/aperteplayfm</p>
-              </div>
+              <p className="text-xs text-muted-foreground">Conecte-se conosco nas redes sociais para ficar por dentro de tudo!</p>
             </div>
           </div>
 
-          <div className="border-t border-slate-800 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2025 Aperte o Play FM 87.9. Todos os direitos reservados.</p>
+          <div className="border-t border-slate-800 pt-6 text-center">
+            <p className="text-sm text-muted-foreground">
+              © 2025 Aperte o Play FM. Todos os direitos reservados.
+            </p>
           </div>
         </div>
       </footer>
