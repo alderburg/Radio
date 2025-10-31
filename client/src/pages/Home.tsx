@@ -13,6 +13,7 @@ import nightShowImage from '@assets/generated_images/Night_talk_show_setup_5b9e5
 import newsImage from '@assets/generated_images/News_bulletin_backdrop_image_ad8d9119.png';
 import eventImage from '@assets/generated_images/Community_event_coverage_photo_27c09e1a.png';
 import supporterImage from '@assets/generated_images/Supporter_logo_placeholder_5f468ddb.png';
+import logoColor from '/logo-aperte-play-color.png?url';
 
 export default function Home() {
   const [currentSupporterSlide, setCurrentSupporterSlide] = useState(0);
@@ -440,7 +441,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Aperte o Play FM</h3>
+              <img 
+                src={logoColor} 
+                alt="Aperte o Play FM" 
+                className="h-16 w-auto mb-4" 
+              />
               <p className="text-muted-foreground mb-4">
                 A rádio que conecta você com música, informação e entretenimento de qualidade 24 horas por dia.
               </p>
