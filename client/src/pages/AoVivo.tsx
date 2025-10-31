@@ -45,7 +45,7 @@ export default function AoVivo() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-background/40 backdrop-blur-sm">
+      <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             <div>

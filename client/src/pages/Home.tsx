@@ -70,7 +70,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-background/40 backdrop-blur-sm">
+      <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="flex items-start gap-4 mb-12 md:justify-center"
@@ -100,7 +100,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-card/40 backdrop-blur-sm">
+      <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6" data-testid="text-about-title">Sobre Nós</h2>
           <p className="text-lg text-muted-foreground mb-8" data-testid="text-about-content">

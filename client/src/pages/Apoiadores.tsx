@@ -34,7 +34,7 @@ export default function Apoiadores() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-background/40 backdrop-blur-sm">
+      <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-supporters-thanks">

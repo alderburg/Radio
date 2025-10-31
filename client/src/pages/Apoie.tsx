@@ -30,7 +30,7 @@ export default function Apoie() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-background/40 backdrop-blur-sm">
+      <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <Card className="bg-gradient-to-br from-gradient-start/5 to-gradient-end/5 border-primary/20 p-8 md:p-12">
           <div className="text-center mb-8">
