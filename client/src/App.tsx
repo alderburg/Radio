@@ -40,22 +40,23 @@ function App() {
         <TooltipProvider>
           <AudioPlayerProvider>
             <div className="min-h-screen relative">
-              {/* Camada de fundo com degradê - sempre visível */}
+              {/* Camada de fundo com degradê roxo para azul */}
               <div 
                 className="fixed inset-0 z-0"
                 style={{
                   background: `linear-gradient(135deg, 
-                    hsl(230, 65%, 10%) 0%, 
-                    hsl(250, 70%, 12%) 20%,
-                    hsl(265, 75%, 11%) 40%,
-                    hsl(245, 70%, 13%) 60%,
-                    hsl(235, 65%, 11%) 80%,
-                    hsl(240, 70%, 9%) 100%
+                    hsl(265, 70%, 12%) 0%, 
+                    hsl(255, 75%, 14%) 15%,
+                    hsl(245, 80%, 16%) 30%,
+                    hsl(235, 75%, 15%) 45%,
+                    hsl(225, 70%, 14%) 60%,
+                    hsl(215, 65%, 13%) 75%,
+                    hsl(210, 70%, 11%) 100%
                   )`
                 }}
               />
               
-              {/* Camada de efeitos radiais animados */}
+              {/* Camada de efeitos radiais animados - roxo e azul */}
               <div 
                 className="fixed z-0 animate-[gradient-shift_20s_ease-in-out_infinite]"
                 style={{
@@ -64,23 +65,23 @@ function App() {
                   right: '-10%',
                   bottom: '-10%',
                   background: `
-                    radial-gradient(circle 700px at 20% 25%, hsla(240, 100%, 50%, 0.28) 0%, transparent 45%),
-                    radial-gradient(circle 900px at 80% 20%, hsla(260, 100%, 45%, 0.32) 0%, transparent 50%),
-                    radial-gradient(circle 800px at 15% 75%, hsla(250, 100%, 55%, 0.24) 0%, transparent 45%),
-                    radial-gradient(circle 1000px at 85% 80%, hsla(270, 100%, 50%, 0.20) 0%, transparent 50%),
-                    radial-gradient(ellipse 1400px 900px at 50% 50%, hsla(245, 100%, 40%, 0.18) 0%, transparent 65%)
+                    radial-gradient(circle 800px at 20% 30%, hsla(270, 100%, 55%, 0.25) 0%, transparent 50%),
+                    radial-gradient(circle 900px at 80% 25%, hsla(220, 100%, 55%, 0.28) 0%, transparent 55%),
+                    radial-gradient(circle 700px at 15% 70%, hsla(260, 100%, 60%, 0.22) 0%, transparent 48%),
+                    radial-gradient(circle 1000px at 85% 75%, hsla(210, 100%, 50%, 0.24) 0%, transparent 52%),
+                    radial-gradient(ellipse 1300px 800px at 50% 50%, hsla(240, 100%, 45%, 0.16) 0%, transparent 60%)
                   `,
                   pointerEvents: 'none'
                 }}
               />
               
-              {/* Camada de brilho pulsante */}
+              {/* Camada de brilho pulsante - transição roxo-azul */}
               <div 
                 className="fixed inset-0 z-0 animate-[pulse-glow_6s_ease-in-out_infinite_alternate]"
                 style={{
                   background: `
-                    radial-gradient(circle 500px at 35% 45%, hsla(245, 100%, 55%, 0.14) 0%, transparent 50%),
-                    radial-gradient(circle 600px at 65% 55%, hsla(260, 100%, 60%, 0.12) 0%, transparent 50%)
+                    radial-gradient(circle 600px at 30% 40%, hsla(260, 100%, 60%, 0.15) 0%, transparent 55%),
+                    radial-gradient(circle 650px at 70% 60%, hsla(220, 100%, 60%, 0.13) 0%, transparent 55%)
                   `,
                   pointerEvents: 'none'
                 }}
