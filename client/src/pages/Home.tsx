@@ -118,7 +118,7 @@ export default function Home() {
   }, [supporters.length]);
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-20">
       <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-black">
         <div 
           className="absolute inset-0" 
