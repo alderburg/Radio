@@ -12,17 +12,22 @@ import nightShowImage from '@assets/generated_images/Night_talk_show_setup_5b9e5
 
 export default function Home() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true,
+    loop: false,
     align: 'start',
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    duration: 40
   });
 
   useEffect(() => {
     if (!emblaApi) return;
 
     const autoplay = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 4000);
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      } else {
+        emblaApi.scrollTo(0);
+      }
+    }, 5000);
 
     return () => clearInterval(autoplay);
   }, [emblaApi]);
