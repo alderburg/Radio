@@ -611,7 +611,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  <a href="mailto:contato@aperteplayfm.com.br" className="text-xs hover:text-primary transition-colors">contato@aperteplayfm.com.br</a>
+                  <a href="mailto:contato@aperteoplay.com" className="text-xs hover:text-primary transition-colors">contato@aperteoplay.com</a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="h-4 w-4 flex-shrink-0" />
@@ -630,13 +630,13 @@ export default function Home() {
             <div>
               <h4 className="text-lg font-semibold mb-3">Redes Sociais</h4>
               <div className="flex flex-wrap gap-3 mb-3">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 transition-colors border border-purple-500/20">
+                <a href="https://www.instagram.com/aperteoplayfm/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 transition-colors border border-purple-500/20">
                   <Instagram className="h-5 w-5 text-purple-400" />
                 </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors border border-blue-500/20">
+                <a href="https://www.facebook.com/people/Aperte-O-Play/100094220708639/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors border border-blue-500/20">
                   <Facebook className="h-5 w-5 text-blue-400" />
                 </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-red-600/20 hover:bg-red-600/30 transition-colors border border-red-500/20">
+                <a href="https://www.youtube.com/@aperteoplayfm" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-red-600/20 hover:bg-red-600/30 transition-colors border border-red-500/20">
                   <Youtube className="h-5 w-5 text-red-400" />
                 </a>
                 <a href="https://wa.me/5511987654321" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-green-600/20 hover:bg-green-600/30 transition-colors border border-green-500/20">
