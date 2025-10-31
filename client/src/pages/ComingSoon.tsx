@@ -1,72 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { useAudioPlayer } from '@/contexts/AudioPlayerContext';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { Radio, Calendar, Clock, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
 import logoColor from '/logo-aperte-play-color.png?url';
 
-declare global {
-  interface Window {
-    YT: any;
-    onYouTubeIframeAPIReady: () => void;
-  }
-}
-
 export default function ComingSoon() {
-  const { isPlaying, togglePlay } = useAudioPlayer();
-  const [player, setPlayer] = useState<any>(null);
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const playerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-
-    window.onYouTubeIframeAPIReady = () => {
-      const ytPlayer = new window.YT.Player('youtube-player', {
-        height: '100%',
-        width: '100%',
-        videoId: 'dQw4w9WgXcQ',
-        playerVars: {
-          autoplay: 0,
-          controls: 1,
-          rel: 0,
-          modestbranding: 1,
-        },
-        events: {
-          onStateChange: onPlayerStateChange,
-        },
-      });
-      setPlayer(ytPlayer);
-    };
-
-    return () => {
-      if (player) {
-        player.destroy();
-      }
-    };
-  }, []);
-
-  const onPlayerStateChange = (event: any) => {
-    if (event.data === window.YT.PlayerState.PLAYING) {
-      setVideoPlaying(true);
-      if (isPlaying) {
-        togglePlay();
-      }
-    } else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
-      setVideoPlaying(false);
-    }
-  };
-
-  useEffect(() => {
-    if (isPlaying && videoPlaying && player) {
-      player.pauseVideo();
-      setVideoPlaying(false);
-    }
-  }, [isPlaying]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4 pb-24 overflow-hidden relative">
@@ -146,28 +83,7 @@ export default function ComingSoon() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-        >
-          <Card className="bg-slate-900/50 border-slate-700/50 backdrop-blur-sm overflow-hidden">
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-4 text-center text-white">
-                Assista Nossa Programação
-              </h3>
-              <div className="aspect-video bg-black rounded-lg overflow-hidden" ref={playerRef}>
-                <div id="youtube-player"></div>
-              </div>
-              <p className="text-sm text-slate-400 text-center mt-4">
-                {videoPlaying ? '▶ Vídeo reproduzindo' : 'Clique para assistir'}
-                {isPlaying && ' | 🎵 Áudio da rádio tocando'}
-              </p>
-            </div>
-          </Card>
-        </motion.div>
-
-        <motion.div
-          className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4"
+          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.4 }}
