@@ -119,8 +119,8 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden">
-          <div className="mx-4 my-2 bg-gray-900/95 backdrop-blur-lg rounded-2xl overflow-hidden">
+        <div className="lg:hidden fixed inset-x-0 top-20 z-40">
+          <div className="mx-4 my-2 bg-gray-900/95 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl">
             <nav className="px-4 py-4 space-y-1">
               {navItems.map((item) => (
                 <Link key={item.path} href={item.path}>
