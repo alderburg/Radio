@@ -40,58 +40,35 @@ function App() {
         <TooltipProvider>
           <AudioPlayerProvider>
             <div className="min-h-screen relative">
-              {/* Camada base com degradê diagonal ciano/magenta escuro */}
+              {/* Camada base com gradiente */}
               <div 
-                className="fixed inset-0 z-0"
-                style={{
-                  background: `linear-gradient(135deg, 
-                    #0a0d1f 0%,
-                    #0d1628 15%,
-                    #111a35 30%,
-                    #0f1832 50%,
-                    #14182e 70%,
-                    #0e1229 85%,
-                    #0a0e1f 100%
-                  )`
-                }}
+                className="fixed inset-0 z-0 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900"
               />
               
-              {/* Camada de halos coloridos - ciano e magenta */}
-              <div 
-                className="fixed z-0 animate-[gradient-shift_20s_ease-in-out_infinite]"
-                style={{
-                  top: '-10%',
-                  left: '-10%',
-                  right: '-10%',
-                  bottom: '-10%',
-                  background: `
-                    radial-gradient(circle 900px at 15% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
-                    radial-gradient(circle 1100px at 85% 30%, rgba(255, 0, 255, 0.12) 0%, transparent 55%),
-                    radial-gradient(circle 800px at 25% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 48%),
-                    radial-gradient(circle 950px at 75% 75%, rgba(255, 0, 255, 0.09) 0%, transparent 52%)
-                  `,
-                  pointerEvents: 'none'
-                }}
-              />
+              {/* Pontos de luz decorativos */}
+              <div className="fixed inset-0 z-0 overflow-hidden" style={{ pointerEvents: 'none' }}>
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+                <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+                <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-violet-600/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }} />
+              </div>
               
-              {/* Camada de brilho sutil pulsante */}
+              {/* Efeito de brilho animado */}
               <div 
-                className="fixed inset-0 z-0 animate-[pulse-glow_8s_ease-in-out_infinite_alternate]"
+                className="fixed inset-0 z-0 bg-gradient-to-r from-transparent via-indigo-500/5 to-transparent animate-[shimmer_8s_ease-in-out_infinite]"
                 style={{
-                  background: `
-                    radial-gradient(circle 700px at 40% 35%, rgba(0, 212, 255, 0.05) 0%, transparent 60%),
-                    radial-gradient(circle 750px at 60% 65%, rgba(255, 0, 255, 0.07) 0%, transparent 60%)
-                  `,
+                  backgroundSize: '200% 100%',
+                  animation: 'shimmer 8s ease-in-out infinite',
                   pointerEvents: 'none'
-                }}
+                }} 
               />
               
               {/* Camada de textura granulada */}
               <div 
-                className="fixed inset-0 z-0 opacity-30"
+                className="fixed inset-0 z-0 opacity-20"
                 style={{
                   backgroundImage: `radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                                    radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.02) 1px, transparent 1px)`,
+                                    radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.02) 1px, transparent 1px)`,
                   backgroundSize: '50px 50px',
                   pointerEvents: 'none'
                 }}
