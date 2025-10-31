@@ -1,0 +1,160 @@
+🟡 PROMPT PARA REPLIT
+
+Gere um projeto React moderno com TailwindCSS e React Router para o site da rádio Aperte o Play FM (87.9), com base nas instruções abaixo:
+
+🏗️ Estrutura geral:
+
+Framework: React + Vite + TypeScript
+
+Estilo: Tailwind CSS
+
+Navegação: React Router DOM
+
+Player: mini player integrado ao Shoutcast, com Play/Pause, controle de volume, e atualização automática da informação do programa.
+
+O site deve ser SPA — mudar de páginas sem recarregar (sem reload).
+
+Tema baseado nas cores extraídas das imagens anexadas (logos e artes da rádio).
+
+Design moderno, com bordas arredondadas, sombras suaves e fontes clean.
+
+Layout totalmente responsivo.
+
+📋 Menu superior fixo:
+
+Itens:
+
+Home
+
+Ao Vivo
+
+Programação
+
+Apoiadores
+
+Notícias
+
+Apoie
+
+Login
+
+O menu deve ser fixo no topo, com um logotipo à esquerda e os links à direita (hambúrguer menu no mobile).
+Ao clicar em qualquer item, a transição de página deve ser suave sem recarregar.
+
+🎧 Player de áudio:
+
+Mini player no menu (com ícone de Play/Pause + controle de volume).
+
+Player fixo na parte inferior do site (visível em todas as páginas).
+
+Esse player deve:
+
+Exibir imagem do programa atual, título e descrição.
+
+Ter botão Play/Pause e barra de volume.
+
+Puxar o áudio da transmissão Shoutcast via URL (ex: https://seu-endereco-shoutcast/stream).
+
+Sincronizar o estado entre o mini player (menu) e o player inferior (se der play em um, o outro também deve refletir o estado).
+
+🏠 Home:
+
+Crie uma página inicial com:
+
+Um banner grande de boas-vindas:
+“Bem-vindo à Aperte o Play FM — A Rádio que Conecta Você!”
+
+Subtítulo com a frequência: 87.9 MHz
+
+Uma seção “Destaques” com cards de 3 programas principais (imagem, nome e horário).
+
+Uma seção “Sobre nós” contando brevemente a missão da rádio e chamando para ouvir ao vivo.
+
+▶️ Ao Vivo:
+
+Divida a página em dois blocos:
+
+À esquerda: um player de vídeo do YouTube (embed) para transmissões ao vivo.
+
+À direita: um banner quadrado com bordas arredondadas, que vai alternando automaticamente imagens dos apoiadores (slideshow ou carrossel).
+Abaixo disso, uma chamada:
+
+“Sintonize 87.9 FM e ouça ao vivo agora mesmo!”
+
+📅 Programação:
+
+Barra horizontal com os dias da semana (Domingo a Sábado).
+
+Ao clicar em um dia, mostre os programas daquele dia em cards com:
+
+Imagem do programa
+
+Horário
+
+Nome
+
+Descrição curta
+
+A transição entre dias deve ser suave, tipo slide/fade.
+
+💙 Apoiadores:
+
+Grade de banners dos apoiadores (imagens).
+
+Título: “Nossos Apoiadores”
+
+Texto breve agradecendo o apoio.
+
+Animação sutil (fade-in ou zoom) ao aparecer na tela.
+
+📰 Notícias:
+
+Layout estilo blog, com cards listando notícias recentes.
+
+Cada card: imagem, título, resumo e botão “Ler mais”.
+
+Quando clicar, abrir uma página interna (/noticia/:id) para o conteúdo completo (mock inicial com texto fictício).
+
+🙌 Apoie:
+
+Título: “Ajude a manter a Aperte o Play FM no ar”
+
+Texto motivador explicando a importância das doações e apoio comunitário.
+
+Três imagens de QR Codes (como placeholders para depois substituir).
+
+Botão: “Quero Apoiar Agora”.
+
+Fundo suave com destaque emocional.
+
+🔒 Login:
+
+Tela de login simples com:
+
+Campos de email e senha
+
+Botão “Entrar”
+
+Link “Esqueci minha senha”
+
+Após login, redirecionar para /painel (a ser criado futuramente).
+
+⚙️ Extras:
+
+Adicionar animações sutis com Framer Motion.
+
+Todos os componentes devem ser reutilizáveis.
+
+As cores principais devem ser puxadas das logos enviadas.
+
+Responsividade total (mobile-first).
+
+Importante: o site deve funcionar perfeitamente como SPA, sem recarregar páginas.
+
+🧠 Observações:
+
+Utilize boas práticas de componentização.
+
+O player do Shoutcast deve ser funcional (simule com uma URL genérica se não tiver uma ainda).
+
+Estruture o projeto pronto para expansão (por exemplo, futura adição de painel de gerência, sistema de notícias etc).
