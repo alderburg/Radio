@@ -2,12 +2,37 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Heart } from 'lucide-react';
 import qrCodeImage from '@assets/generated_images/QR_code_donation_graphic_9e4aa183.png';
+import supportBanner from '@assets/generated_images/Donation_support_campaign_banner_2a86c0d7.png';
 
 export default function Apoie() {
   return (
-    <div className="min-h-screen pb-32 pt-24 px-4">
-      <div className="max-w-4xl mx-auto">
-        <Card className="bg-gradient-to-br from-gradient-start/5 to-gradient-end/5 border-primary/20 p-8 md:p-12">
+    <div className="min-h-screen pb-32">
+      <section className="relative min-h-[400px] flex items-center justify-center overflow-hidden bg-black">
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            backgroundImage: `url(${supportBanner})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-gradient-start/20 to-gradient-end/20" />
+        </div>
+        
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20 sm:mt-0">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.6)' }} data-testid="text-support-banner-title">
+            Apoie a Rádio
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-white" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }} data-testid="text-support-banner-subtitle">
+            Sua contribuição mantém a música tocando
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-background">
+        <div className="max-w-4xl mx-auto">
+          <Card className="bg-gradient-to-br from-gradient-start/5 to-gradient-end/5 border-primary/20 p-8 md:p-12">
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
               <Heart className="h-8 w-8 text-primary" />
@@ -54,7 +79,8 @@ export default function Apoie() {
             </p>
           </div>
         </Card>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
