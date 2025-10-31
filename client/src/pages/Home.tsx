@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import ProgramCard from '@/components/ProgramCard';
 import { Radio } from 'lucide-react';
 import { Link } from 'wouter';
+import { motion } from 'framer-motion';
 import heroImage from '@assets/generated_images/Radio_DJ_studio_portrait_4a97fc19.png';
 import morningShowImage from '@assets/generated_images/Morning_show_concept_art_cd87e2ef.png';
 import eveningShowImage from '@assets/generated_images/Evening_music_show_concept_91eff014.png';
@@ -71,13 +72,26 @@ export default function Home() {
 
       <section className="py-16 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-start gap-4 mb-12 md:justify-center">
-            <div className="w-1 bg-gradient-to-b from-cyan-500 to-purple-600 rounded-full md:hidden mt-1" style={{ height: '4.2rem' }}></div>
+          <motion.div 
+            className="flex items-start gap-4 mb-12 md:justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div 
+              className="w-1 bg-gradient-to-b from-cyan-500 to-purple-600 rounded-full md:hidden mt-1" 
+              style={{ height: '4.2rem' }}
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            ></motion.div>
             <h2 className="text-4xl font-bold text-left md:text-center" data-testid="text-featured-title">
               <span className="block md:inline">Programações </span>
               <span className="block md:inline">em Destaque</span>
             </h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPrograms.map((program) => (
               <ProgramCard key={program.title} {...program} />
