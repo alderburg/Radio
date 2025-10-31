@@ -37,19 +37,19 @@ export default function Home() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6" data-testid="text-hero-title">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6)' }} data-testid="text-hero-title">
             Aperte o Play FM
           </h1>
-          <p className="text-2xl md:text-3xl text-white/90 mb-4" data-testid="text-hero-subtitle">
+          <p className="text-2xl md:text-3xl text-white mb-8 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]" style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.6)' }} data-testid="text-hero-subtitle">
             A Rádio que Conecta Você!
           </p>
           <div className="flex flex-col items-center gap-4">
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full">
+            <div className="inline-flex items-center gap-3 bg-black/40 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
               <Radio className="h-6 w-6 text-white" />
               <span className="text-3xl font-bold text-white" data-testid="text-frequency">87.9 MHz</span>
             </div>
             <Link href="/ao-vivo">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90" data-testid="button-listen-live">
+              <Button size="lg" className="bg-purple-600 text-white hover:bg-purple-700" data-testid="button-listen-live">
                 Ouça Ao Vivo
               </Button>
             </Link>
