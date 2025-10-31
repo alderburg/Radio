@@ -247,17 +247,46 @@
 
   body {
     @apply font-sans antialiased text-foreground;
-    background: linear-gradient(135deg, 
-      hsl(235, 45%, 12%) 0%, 
-      hsl(260, 55%, 18%) 25%,
-      hsl(280, 60%, 15%) 50%,
-      hsl(260, 55%, 18%) 75%,
-      hsl(235, 45%, 12%) 100%
-    );
+    background: radial-gradient(ellipse at top, hsl(240, 50%, 20%), hsl(235, 45%, 10%));
     background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
   }
   
   body::before {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: 
+      radial-gradient(circle 600px at 15% 20%, hsla(300, 100%, 50%, 0.35) 0%, transparent 50%),
+      radial-gradient(circle 800px at 85% 15%, hsla(188, 100%, 50%, 0.40) 0%, transparent 55%),
+      radial-gradient(circle 700px at 10% 80%, hsla(188, 100%, 60%, 0.30) 0%, transparent 50%),
+      radial-gradient(circle 900px at 90% 85%, hsla(300, 100%, 60%, 0.28) 0%, transparent 55%),
+      radial-gradient(ellipse 1200px 800px at 50% 50%, hsla(260, 100%, 45%, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: gradient-shift 15s ease-in-out infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    33% {
+      transform: translate(2%, -2%) scale(1.05);
+      opacity: 0.9;
+    }
+    66% {
+      transform: translate(-2%, 2%) scale(1.03);
+      opacity: 0.95;
+    }
+  }
+  
+  body::after {
     content: "";
     position: fixed;
     top: 0;
@@ -265,22 +294,19 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(ellipse at 20% 20%, hsla(300, 100%, 50%, 0.15) 0%, transparent 40%),
-      radial-gradient(ellipse at 80% 20%, hsla(188, 100%, 50%, 0.15) 0%, transparent 40%),
-      radial-gradient(ellipse at 20% 80%, hsla(188, 100%, 50%, 0.12) 0%, transparent 40%),
-      radial-gradient(ellipse at 80% 80%, hsla(300, 100%, 50%, 0.12) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, hsla(270, 100%, 50%, 0.05) 0%, transparent 60%);
+      radial-gradient(circle 400px at 30% 40%, hsla(188, 100%, 70%, 0.12) 0%, transparent 50%),
+      radial-gradient(circle 500px at 70% 60%, hsla(300, 100%, 70%, 0.10) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
-    animation: subtle-pulse 8s ease-in-out infinite;
+    animation: pulse-glow 4s ease-in-out infinite alternate;
   }
   
-  @keyframes subtle-pulse {
-    0%, 100% {
-      opacity: 1;
+  @keyframes pulse-glow {
+    0% {
+      opacity: 0.6;
     }
-    50% {
-      opacity: 0.8;
+    100% {
+      opacity: 1;
     }
   }
   
