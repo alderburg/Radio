@@ -16,7 +16,7 @@ import supporterImage from '@assets/generated_images/Supporter_logo_placeholder_
 
 export default function Home() {
   const [currentSupporterSlide, setCurrentSupporterSlide] = useState(0);
-  
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: false,
     align: 'start',
@@ -130,7 +130,7 @@ export default function Home() {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-gradient-start/20 to-gradient-end/20" />
         </div>
-        
+
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20 sm:mt-0">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 whitespace-nowrap" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.6)' }} data-testid="text-hero-title">
             Aperte o Play FM
@@ -185,7 +185,7 @@ export default function Home() {
               <span className="block md:inline">em Destaque</span>
             </motion.h2>
           </motion.div>
-          
+
           <div className="relative max-w-6xl mx-auto">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex gap-6">
@@ -416,9 +416,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-gradient-to-br from-purple-950/30 to-pink-950/30 relative overflow-hidden">
+      <section className="pt-16 pb-0 px-4 bg-gradient-to-br from-purple-950/30 to-pink-950/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-950/50 to-pink-950/50"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-4xl mx-auto text-center relative z-10 pb-16">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-pink-600/20 rounded-full mb-6">
             <Heart className="h-8 w-8 text-pink-400" />
           </div>
