@@ -75,21 +75,24 @@ export default function Home() {
           <motion.div 
             className="flex items-start gap-4 mb-12 md:justify-center"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.div 
               className="w-2 h-20 bg-gradient-to-b from-indigo-500 via-blue-500 to-purple-600 rounded-full md:hidden mt-1 flex-shrink-0 shadow-[0_0_24px_rgba(99,102,241,0.8),0_0_12px_rgba(168,85,247,0.6)]" 
               style={{ minWidth: '8px', minHeight: '80px' }}
               initial={{ scaleY: 0, opacity: 0 }}
-              animate={{ scaleY: 1, opacity: 1 }}
+              whileInView={{ scaleY: 1, opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             ></motion.div>
             <motion.h2 
               className="text-4xl font-bold text-left md:text-center" 
               data-testid="text-featured-title"
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             >
               <span className="block md:inline">Programações </span>
