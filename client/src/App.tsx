@@ -45,12 +45,12 @@ function App() {
                 className="fixed inset-0 z-0"
                 style={{
                   background: `linear-gradient(135deg, 
-                    hsl(265, 70%, 12%) 0%, 
-                    hsl(280, 75%, 15%) 20%,
-                    hsl(290, 80%, 13%) 40%,
-                    hsl(275, 75%, 14%) 60%,
-                    hsl(285, 70%, 12%) 80%,
-                    hsl(270, 75%, 11%) 100%
+                    hsl(230, 65%, 10%) 0%, 
+                    hsl(250, 70%, 12%) 20%,
+                    hsl(265, 75%, 11%) 40%,
+                    hsl(245, 70%, 13%) 60%,
+                    hsl(235, 65%, 11%) 80%,
+                    hsl(240, 70%, 9%) 100%
                   )`
                 }}
               />
@@ -64,11 +64,11 @@ function App() {
                   right: '-10%',
                   bottom: '-10%',
                   background: `
-                    radial-gradient(circle 700px at 20% 25%, hsla(300, 100%, 50%, 0.30) 0%, transparent 45%),
-                    radial-gradient(circle 900px at 80% 20%, hsla(270, 100%, 45%, 0.35) 0%, transparent 50%),
-                    radial-gradient(circle 800px at 15% 75%, hsla(285, 100%, 55%, 0.25) 0%, transparent 45%),
-                    radial-gradient(circle 1000px at 85% 80%, hsla(295, 100%, 50%, 0.22) 0%, transparent 50%),
-                    radial-gradient(ellipse 1400px 900px at 50% 50%, hsla(280, 100%, 40%, 0.15) 0%, transparent 65%)
+                    radial-gradient(circle 700px at 20% 25%, hsla(240, 100%, 50%, 0.28) 0%, transparent 45%),
+                    radial-gradient(circle 900px at 80% 20%, hsla(260, 100%, 45%, 0.32) 0%, transparent 50%),
+                    radial-gradient(circle 800px at 15% 75%, hsla(250, 100%, 55%, 0.24) 0%, transparent 45%),
+                    radial-gradient(circle 1000px at 85% 80%, hsla(270, 100%, 50%, 0.20) 0%, transparent 50%),
+                    radial-gradient(ellipse 1400px 900px at 50% 50%, hsla(245, 100%, 40%, 0.18) 0%, transparent 65%)
                   `,
                   pointerEvents: 'none'
                 }}
@@ -79,8 +79,8 @@ function App() {
                 className="fixed inset-0 z-0 animate-[pulse-glow_6s_ease-in-out_infinite_alternate]"
                 style={{
                   background: `
-                    radial-gradient(circle 500px at 35% 45%, hsla(290, 100%, 60%, 0.12) 0%, transparent 50%),
-                    radial-gradient(circle 600px at 65% 55%, hsla(275, 100%, 65%, 0.10) 0%, transparent 50%)
+                    radial-gradient(circle 500px at 35% 45%, hsla(245, 100%, 55%, 0.14) 0%, transparent 50%),
+                    radial-gradient(circle 600px at 65% 55%, hsla(260, 100%, 60%, 0.12) 0%, transparent 50%)
                   `,
                   pointerEvents: 'none'
                 }}

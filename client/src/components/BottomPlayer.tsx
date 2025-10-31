@@ -8,8 +8,20 @@ export default function BottomPlayer() {
   const { isPlaying, volume, currentProgram, togglePlay, setVolume } = useAudioPlayer();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-purple-900/90 to-purple-800/85 backdrop-blur-xl border-t border-purple-500/30 shadow-[0_-4px_20px_rgba(168,85,247,0.15)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-indigo-950/95 via-purple-900/92 to-blue-900/88 backdrop-blur-xl border-t border-purple-400/40 shadow-[0_-4px_30px_rgba(99,102,241,0.25),0_-2px_15px_rgba(168,85,247,0.2)] relative overflow-hidden">
+      {/* Efeito de brilho animado */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-[shimmer_3s_ease-in-out_infinite]" 
+           style={{
+             backgroundSize: '200% 100%',
+             animation: 'shimmer 3s ease-in-out infinite'
+           }} 
+      />
+      
+      {/* Pontos de luz decorativos */}
+      <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-1/4 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3 flex-1 min-w-0">
             <img
