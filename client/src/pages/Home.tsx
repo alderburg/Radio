@@ -80,8 +80,8 @@ export default function Home() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.div 
-              className="w-2 h-14 bg-gradient-to-b from-indigo-500 via-blue-500 to-purple-600 rounded-full md:hidden mt-1 flex-shrink-0 shadow-[0_0_24px_rgba(99,102,241,0.8),0_0_12px_rgba(168,85,247,0.6)]" 
-              style={{ minWidth: '8px', minHeight: '56px' }}
+              className="w-2 bg-gradient-to-b from-indigo-500 via-blue-500 to-purple-600 rounded-full md:hidden flex-shrink-0 shadow-[0_0_24px_rgba(99,102,241,0.8),0_0_12px_rgba(168,85,247,0.6)] self-stretch" 
+              style={{ minWidth: '8px' }}
               initial={{ scaleY: 0, opacity: 0 }}
               whileInView={{ scaleY: 1, opacity: 1 }}
               viewport={{ once: true, margin: "-120px 0px -120px 0px" }}
