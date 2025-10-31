@@ -109,7 +109,11 @@ export default function Header() {
           <Button
             size="icon"
             variant="ghost"
-            className="lg:hidden hover-elevate active-elevate-2 bg-purple-600 rounded-md hover:bg-purple-700"
+            className={`lg:hidden hover-elevate active-elevate-2 rounded-md transition-colors duration-300 ${
+              scrolled 
+                ? 'bg-cyan-500 hover:bg-cyan-600' 
+                : 'bg-purple-600 hover:bg-purple-700'
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             data-testid="button-mobile-menu"
           >
