@@ -444,7 +444,7 @@ export default function Home() {
               <img 
                 src={logoColor} 
                 alt="Aperte o Play FM" 
-                className="h-16 w-auto mb-4" 
+                className="h-24 w-auto mb-4" 
               />
               <p className="text-muted-foreground mb-4">
                 A rádio que conecta você com música, informação e entretenimento de qualidade 24 horas por dia.
