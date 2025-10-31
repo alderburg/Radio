@@ -143,8 +143,23 @@ export default function Header() {
 
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-20 z-40">
-          <div className="mx-4 my-2 bg-gray-900 rounded-2xl overflow-hidden shadow-2xl border border-gray-800">
-            <nav className="px-4 py-4 space-y-1">
+          <div className="mx-4 my-2 bg-gradient-to-b from-slate-950 via-indigo-950 to-slate-900 rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(99,102,241,0.4),0_4px_16px_rgba(168,85,247,0.3)] border border-indigo-500/30 relative">
+            {/* Borda superior brilhante */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400 to-transparent rounded-t-2xl" />
+            
+            {/* Efeito de brilho animado */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent animate-[shimmer_4s_ease-in-out_infinite]" 
+                 style={{
+                   backgroundSize: '200% 100%',
+                   animation: 'shimmer 4s ease-in-out infinite'
+                 }} 
+            />
+            
+            {/* Pontos de luz decorativos */}
+            <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute top-0 right-1/4 w-32 h-32 bg-purple-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            
+            <nav className="px-4 py-4 space-y-1 relative z-10">
               {navItems.map((item) => (
                 <Link key={item.path} href={item.path}>
                   <Button
