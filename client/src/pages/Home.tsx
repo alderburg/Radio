@@ -76,7 +76,7 @@ export default function Home() {
             className="flex items-start gap-4 mb-12 md:justify-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, margin: "-120px 0px -120px 0px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.div 
@@ -84,7 +84,7 @@ export default function Home() {
               style={{ minWidth: '8px', minHeight: '80px' }}
               initial={{ scaleY: 0, opacity: 0 }}
               whileInView={{ scaleY: 1, opacity: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, margin: "-120px 0px -120px 0px" }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             ></motion.div>
             <motion.h2 
@@ -92,7 +92,7 @@ export default function Home() {
               data-testid="text-featured-title"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, margin: "-120px 0px -120px 0px" }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             >
               <span className="block md:inline">Programações </span>
