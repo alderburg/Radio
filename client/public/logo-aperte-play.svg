@@ -1,0 +1,15 @@
+
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="60" rx="8" fill="url(#gradient)"/>
+  <text x="100" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">
+    Aperte o Play FM
+  </text>
+  <circle cx="20" cy="30" r="8" fill="white" opacity="0.8"/>
+  <polygon points="18,26 18,34 26,30" fill="#00D9FF"/>
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00D9FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B300FF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
