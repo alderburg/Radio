@@ -1,14 +1,40 @@
 import { Button } from '@/components/ui/button';
 import ProgramCard from '@/components/ProgramCard';
-import { Radio } from 'lucide-react';
+import { Radio, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
+import useEmblaCarousel from 'embla-carousel-react';
+import { useCallback, useEffect } from 'react';
 import heroImage from '@assets/generated_images/Radio_DJ_studio_portrait_4a97fc19.png';
 import morningShowImage from '@assets/generated_images/Morning_show_concept_art_cd87e2ef.png';
 import eveningShowImage from '@assets/generated_images/Evening_music_show_concept_91eff014.png';
 import nightShowImage from '@assets/generated_images/Night_talk_show_setup_5b9e5b4a.png';
 
 export default function Home() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1
+  });
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const autoplay = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 4000);
+
+    return () => clearInterval(autoplay);
+  }, [emblaApi]);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   const featuredPrograms = [
     {
       title: 'Café da Manhã',
@@ -26,6 +52,18 @@ export default function Home() {
       title: 'Papo Noturno',
       time: '22:00',
       description: 'Conversas profundas e reflexivas para fechar o dia.',
+      image: nightShowImage,
+    },
+    {
+      title: 'Tarde Musical',
+      time: '14:00',
+      description: 'Os melhores hits para animar sua tarde.',
+      image: morningShowImage,
+    },
+    {
+      title: 'Madrugada On',
+      time: '02:00',
+      description: 'Companhia para suas noites em claro com boa música.',
       image: nightShowImage,
     },
   ];
@@ -99,10 +137,40 @@ export default function Home() {
               <span className="block md:inline">em Destaque</span>
             </motion.h2>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredPrograms.map((program) => (
-              <ProgramCard key={program.title} {...program} />
-            ))}
+          
+          <div className="relative">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex gap-6">
+                {featuredPrograms.map((program, index) => (
+                  <div 
+                    key={index} 
+                    className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)]"
+                  >
+                    <ProgramCard {...program} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Button
+              size="icon"
+              variant="outline"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-slate-950/80 border-indigo-500/30 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)]"
+              onClick={scrollPrev}
+              data-testid="button-carousel-prev"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </Button>
+
+            <Button
+              size="icon"
+              variant="outline"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-slate-950/80 border-indigo-500/30 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)]"
+              onClick={scrollNext}
+              data-testid="button-carousel-next"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </Button>
           </div>
         </div>
       </section>
