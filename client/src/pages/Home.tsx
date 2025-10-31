@@ -34,13 +34,14 @@ export default function Home() {
       <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0">
           <img src={heroImage} alt="Aperte o Play FM" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gradient-start/20 to-gradient-end/20" />
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6)' }} data-testid="text-hero-title">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 whitespace-nowrap" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.6)' }} data-testid="text-hero-title">
             Aperte o Play FM
           </h1>
-          <p className="text-2xl md:text-3xl text-white mb-8 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]" style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.6)' }} data-testid="text-hero-subtitle">
+          <p className="text-xl sm:text-2xl md:text-3xl text-white mb-8" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }} data-testid="text-hero-subtitle">
             A Rádio que Conecta Você!
           </p>
           <div className="flex flex-col items-center gap-4">
@@ -49,7 +50,11 @@ export default function Home() {
               <span className="text-3xl font-bold text-white" data-testid="text-frequency">87.9 MHz</span>
             </div>
             <Link href="/ao-vivo">
-              <Button size="lg" className="bg-purple-600 text-white hover:bg-purple-700" data-testid="button-listen-live">
+              <Button size="lg" className="bg-purple-600 text-white hover:bg-purple-700 flex items-center gap-2" data-testid="button-listen-live">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                </span>
                 Ouça Ao Vivo
               </Button>
             </Link>
