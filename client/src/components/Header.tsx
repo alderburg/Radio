@@ -120,21 +120,23 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-gray-900/95 backdrop-blur-lg">
-          <nav className="px-4 py-4 space-y-1">
-            {navItems.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <Button
-                  variant={isActive(item.path) ? 'secondary' : 'ghost'}
-                  className="w-full justify-start hover-elevate active-elevate-2 text-white"
-                  onClick={() => setMobileMenuOpen(false)}
-                  data-testid={`link-mobile-${item.label.toLowerCase()}`}
-                >
-                  {item.label}
-                </Button>
-              </Link>
-            ))}
-          </nav>
+        <div className="lg:hidden">
+          <div className="mx-4 my-2 bg-gray-900/95 backdrop-blur-lg rounded-2xl overflow-hidden">
+            <nav className="px-4 py-4 space-y-1">
+              {navItems.map((item) => (
+                <Link key={item.path} href={item.path}>
+                  <Button
+                    variant={isActive(item.path) ? 'secondary' : 'ghost'}
+                    className="w-full justify-start hover-elevate active-elevate-2 text-white"
+                    onClick={() => setMobileMenuOpen(false)}
+                    data-testid={`link-mobile-${item.label.toLowerCase()}`}
+                  >
+                    {item.label}
+                  </Button>
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
       )}
     </header>
