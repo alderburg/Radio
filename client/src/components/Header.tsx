@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useAudioPlayer } from '@/contexts/AudioPlayerContext';
-import logoImage from '/logo-aperte-play.png?url';
+import logoWhite from '/logo-aperte-play-white.png?url';
+import logoColor from '/logo-aperte-play-color.png?url';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,7 +47,12 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3">
-            <img src={logoImage} alt="Aperte o Play FM" className="h-16 w-auto" data-testid="img-logo" />
+            <img 
+              src={scrolled ? logoColor : logoWhite} 
+              alt="Aperte o Play FM" 
+              className="h-16 w-auto transition-opacity duration-300" 
+              data-testid="img-logo" 
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">

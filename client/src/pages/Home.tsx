@@ -30,10 +30,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen pb-32">
-      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0">
           <img src={heroImage} alt="Aperte o Play FM" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-gradient-start/80 to-gradient-end/80" />
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
