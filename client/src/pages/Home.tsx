@@ -72,16 +72,30 @@ export default function Home() {
 
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-start gap-4 mb-12 md:justify-center">
-            <div 
+          <motion.div 
+            className="flex items-start gap-4 mb-12 md:justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div 
               className="w-2 h-20 bg-gradient-to-b from-indigo-500 via-blue-500 to-purple-600 rounded-full md:hidden mt-1 flex-shrink-0 shadow-[0_0_24px_rgba(99,102,241,0.8),0_0_12px_rgba(168,85,247,0.6)]" 
               style={{ minWidth: '8px', minHeight: '80px' }}
-            ></div>
-            <h2 className="text-4xl font-bold text-left md:text-center" data-testid="text-featured-title">
+              initial={{ scaleY: 0, opacity: 0 }}
+              animate={{ scaleY: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            ></motion.div>
+            <motion.h2 
+              className="text-4xl font-bold text-left md:text-center" 
+              data-testid="text-featured-title"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               <span className="block md:inline">Programações </span>
               <span className="block md:inline">em Destaque</span>
-            </h2>
-          </div>
+            </motion.h2>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPrograms.map((program) => (
               <ProgramCard key={program.title} {...program} />
