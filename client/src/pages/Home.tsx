@@ -71,7 +71,13 @@ export default function Home() {
 
       <section className="py-16 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12" data-testid="text-featured-title">Programações em Destaque</h2>
+          <div className="flex items-start gap-4 mb-12 md:justify-center">
+            <div className="w-1 bg-gradient-to-b from-cyan-500 to-purple-600 rounded-full md:hidden" style={{ height: '4.5rem' }}></div>
+            <h2 className="text-4xl font-bold text-left md:text-center" data-testid="text-featured-title">
+              <span className="block md:inline">Programações </span>
+              <span className="block md:inline">em Destaque</span>
+            </h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPrograms.map((program) => (
               <ProgramCard key={program.title} {...program} />
