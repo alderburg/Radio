@@ -33,7 +33,7 @@ export default function Home() {
     <div className="min-h-screen pb-32">
       <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Aperte o Play FM" className="w-full h-full object-cover" />
+          <img src={heroImage} alt="Aperte o Play FM" className="w-full h-full object-cover object-center" style={{ objectPosition: 'center' }} />
           <div className="absolute inset-0 bg-gradient-to-r from-gradient-start/20 to-gradient-end/20" />
         </div>
         
