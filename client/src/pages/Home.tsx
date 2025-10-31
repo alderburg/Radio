@@ -71,7 +71,7 @@ export default function Home() {
 
       <section className="py-16 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12" data-testid="text-featured-title">Destaques</h2>
+          <h2 className="text-4xl font-bold text-center mb-12" data-testid="text-featured-title">Programações em Destaque</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPrograms.map((program) => (
               <ProgramCard key={program.title} {...program} />
