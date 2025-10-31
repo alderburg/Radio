@@ -8,18 +8,21 @@ export default function BottomPlayer() {
   const { isPlaying, volume, currentProgram, togglePlay, setVolume } = useAudioPlayer();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-indigo-950 via-purple-900 to-blue-900 border-t border-purple-400/40 shadow-[0_-4px_30px_rgba(99,102,241,0.25),0_-2px_15px_rgba(168,85,247,0.2)] overflow-hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-slate-950 via-indigo-950 to-slate-900 border-t border-indigo-500/30 shadow-[0_-8px_32px_rgba(99,102,241,0.4),0_-4px_16px_rgba(168,85,247,0.3)] overflow-hidden">
+      {/* Borda superior brilhante */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400 to-transparent" />
+      
       {/* Efeito de brilho animado */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-[shimmer_3s_ease-in-out_infinite]" 
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent animate-[shimmer_4s_ease-in-out_infinite]" 
            style={{
              backgroundSize: '200% 100%',
-             animation: 'shimmer 3s ease-in-out infinite'
+             animation: 'shimmer 4s ease-in-out infinite'
            }} 
       />
       
       {/* Pontos de luz decorativos */}
-      <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
-      <div className="absolute top-0 right-1/4 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute top-0 right-1/4 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
         <div className="flex items-center gap-4">
