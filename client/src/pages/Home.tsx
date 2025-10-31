@@ -80,8 +80,7 @@ export default function Home() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.div 
-              className="w-1 bg-gradient-to-b from-cyan-500 to-purple-600 rounded-full md:hidden mt-1" 
-              style={{ height: '4.2rem' }}
+              className="w-1 h-20 bg-gradient-to-b from-cyan-500 to-purple-600 rounded-full md:hidden mt-1 flex-shrink-0" 
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true, margin: "-100px" }}

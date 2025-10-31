@@ -1,6 +1,7 @@
 import NewsCard from '@/components/NewsCard';
 import newsImage from '@assets/generated_images/News_bulletin_backdrop_image_ad8d9119.png';
 import eventImage from '@assets/generated_images/Community_event_coverage_photo_27c09e1a.png';
+import newsBanner from '@assets/generated_images/Radio_news_studio_banner_41c80be3.png';
 
 export default function Noticias() {
   const news = [
@@ -49,16 +50,39 @@ export default function Noticias() {
   ];
 
   return (
-    <div className="min-h-screen pb-32 pt-24 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-12" data-testid="text-news-title">Notícias</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {news.map((article) => (
-            <NewsCard key={article.id} {...article} />
-          ))}
+    <div className="min-h-screen pb-32">
+      <section className="relative min-h-[400px] flex items-center justify-center overflow-hidden bg-black">
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            backgroundImage: `url(${newsBanner})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-gradient-start/20 to-gradient-end/20" />
         </div>
-      </div>
+        
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20 sm:mt-0">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.6)' }} data-testid="text-news-title">
+            Notícias
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-white" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }} data-testid="text-news-subtitle">
+            Fique por dentro das últimas novidades
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {news.map((article) => (
+              <NewsCard key={article.id} {...article} />
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

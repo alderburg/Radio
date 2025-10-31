@@ -4,6 +4,7 @@ import ProgramCard from '@/components/ProgramCard';
 import morningShowImage from '@assets/generated_images/Morning_show_concept_art_cd87e2ef.png';
 import eveningShowImage from '@assets/generated_images/Evening_music_show_concept_91eff014.png';
 import nightShowImage from '@assets/generated_images/Night_talk_show_setup_5b9e5b4a.png';
+import programmingBanner from '@assets/generated_images/Programming_schedule_banner_background_ee4a57f4.png';
 
 export default function Programacao() {
   const [selectedDay, setSelectedDay] = useState('Segunda');
@@ -49,37 +50,60 @@ export default function Programacao() {
   };
 
   return (
-    <div className="min-h-screen pb-32 pt-24 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-8" data-testid="text-schedule-title">Programação</h1>
+    <div className="min-h-screen pb-32">
+      <section className="relative min-h-[400px] flex items-center justify-center overflow-hidden bg-black">
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            backgroundImage: `url(${programmingBanner})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-gradient-start/20 to-gradient-end/20" />
+        </div>
+        
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20 sm:mt-0">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.6)' }} data-testid="text-schedule-title">
+            Programação
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-white" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }} data-testid="text-schedule-subtitle">
+            Confira nossa grade completa
+          </p>
+        </div>
+      </section>
 
-        <div className="mb-8 overflow-x-auto">
-          <div className="flex gap-2 min-w-max justify-center pb-4">
-            {days.map((day) => (
-              <Button
-                key={day}
-                variant={selectedDay === day ? 'default' : 'outline'}
-                onClick={() => setSelectedDay(day)}
-                className="hover-elevate active-elevate-2"
-                data-testid={`button-day-${day.toLowerCase()}`}
+      <section className="py-16 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8 overflow-x-auto">
+            <div className="flex gap-2 min-w-max justify-center pb-4">
+              {days.map((day) => (
+                <Button
+                  key={day}
+                  variant={selectedDay === day ? 'default' : 'outline'}
+                  onClick={() => setSelectedDay(day)}
+                  className="hover-elevate active-elevate-2"
+                  data-testid={`button-day-${day.toLowerCase()}`}
+                >
+                  {day}
+                </Button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {programs[selectedDay as keyof typeof programs].map((program, index) => (
+              <div
+                key={`${selectedDay}-${index}`}
+                className="animate-in fade-in duration-500"
               >
-                {day}
-              </Button>
+                <ProgramCard {...program} />
+              </div>
             ))}
           </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {programs[selectedDay as keyof typeof programs].map((program, index) => (
-            <div
-              key={`${selectedDay}-${index}`}
-              className="animate-in fade-in duration-500"
-            >
-              <ProgramCard {...program} />
-            </div>
-          ))}
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
