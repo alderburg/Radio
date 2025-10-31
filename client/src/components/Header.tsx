@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-hidden ${
+      className={`fixed top-0 left-0 right-0 z-50 overflow-hidden ${
         scrolled 
           ? 'bg-gradient-to-b from-slate-950 via-indigo-950 to-slate-900 border-b border-indigo-500/30 shadow-[0_8px_32px_rgba(99,102,241,0.4),0_4px_16px_rgba(168,85,247,0.3)]' 
           : 'bg-transparent backdrop-blur-sm'
@@ -68,7 +68,7 @@ export default function Header() {
             <img 
               src={scrolled ? logoColor : logoWhite} 
               alt="Aperte o Play FM" 
-              className="h-16 w-auto transition-opacity duration-300" 
+              className="h-16 w-auto" 
               data-testid="img-logo" 
             />
           </Link>
@@ -128,7 +128,7 @@ export default function Header() {
           <Button
             size="icon"
             variant="ghost"
-            className={`lg:hidden hover-elevate active-elevate-2 rounded-md transition-colors duration-300 ${
+            className={`lg:hidden hover-elevate active-elevate-2 rounded-md ${
               scrolled 
                 ? 'bg-cyan-500 hover:bg-cyan-600' 
                 : 'bg-purple-600 hover:bg-purple-700'
