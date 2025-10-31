@@ -44,7 +44,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-gradient-start/20 to-gradient-end/20" />
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20 sm:mt-0">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 whitespace-nowrap" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.6)' }} data-testid="text-hero-title">
             Aperte o Play FM
           </h1>
