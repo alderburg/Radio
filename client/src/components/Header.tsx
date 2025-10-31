@@ -120,13 +120,13 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden">
+        <div className="lg:hidden bg-gray-900/95 backdrop-blur-lg">
           <nav className="px-4 py-4 space-y-1">
             {navItems.map((item) => (
               <Link key={item.path} href={item.path}>
                 <Button
                   variant={isActive(item.path) ? 'secondary' : 'ghost'}
-                  className="w-full justify-start hover-elevate active-elevate-2"
+                  className="w-full justify-start hover-elevate active-elevate-2 text-white"
                   onClick={() => setMobileMenuOpen(false)}
                   data-testid={`link-mobile-${item.label.toLowerCase()}`}
                 >
