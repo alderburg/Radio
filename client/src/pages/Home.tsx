@@ -138,13 +138,13 @@ export default function Home() {
             </motion.h2>
           </motion.div>
           
-          <div className="relative">
+          <div className="relative px-12">
             <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-6">
+              <div className="flex -ml-6">
                 {featuredPrograms.map((program, index) => (
                   <div 
                     key={index} 
-                    className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)]"
+                    className="flex-[0_0_100%] min-w-0 pl-6 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
                   >
                     <ProgramCard {...program} />
                   </div>
@@ -155,7 +155,7 @@ export default function Home() {
             <Button
               size="icon"
               variant="outline"
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-slate-950/80 border-indigo-500/30 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)]"
+              className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 bg-slate-950/90 border-indigo-500/40 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)] hover:shadow-[0_0_32px_rgba(99,102,241,0.8)]"
               onClick={scrollPrev}
               data-testid="button-carousel-prev"
             >
@@ -165,7 +165,7 @@ export default function Home() {
             <Button
               size="icon"
               variant="outline"
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-slate-950/80 border-indigo-500/30 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)]"
+              className="absolute -right-2 top-1/2 -translate-y-1/2 z-10 bg-slate-950/90 border-indigo-500/40 hover:bg-indigo-950 shadow-[0_0_24px_rgba(99,102,241,0.6)] hover:shadow-[0_0_32px_rgba(99,102,241,0.8)]"
               onClick={scrollNext}
               data-testid="button-carousel-next"
             >
