@@ -247,7 +247,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -318,7 +317,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="py-16 px-4 bg-gradient-to-br from-slate-900/50 to-slate-800/30">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -392,7 +390,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="py-16 px-4 bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -471,7 +468,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -554,7 +550,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="pt-16 pb-8 px-4 bg-gradient-to-br from-indigo-950/40 to-blue-950/40 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/30 to-blue-950/30"></div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -574,7 +569,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
       <footer className="bg-slate-950 border-t border-slate-800 py-8 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6">
@@ -611,7 +605,7 @@ export default function Home() {
                 <li className="flex items-start gap-2">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs">Rua da Rádio, 879 - Centro</p>
+                    <p className="text-xs">Rua Barao do Rio Branco, N°424</p>
                     <p className="text-xs">Cidade, Estado - CEP 12345-678</p>
                   </div>
                 </li>
