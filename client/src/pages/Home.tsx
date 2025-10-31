@@ -70,7 +70,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-background">
+      <section className="py-16 px-4 bg-background/40 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="flex items-start gap-4 mb-12 md:justify-center"
@@ -80,9 +80,10 @@ export default function Home() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.div 
-              className="w-1 h-20 bg-gradient-to-b from-cyan-500 to-purple-600 rounded-full md:hidden mt-1 flex-shrink-0" 
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
+              className="w-1 h-20 bg-gradient-to-b from-cyan-500 to-purple-600 rounded-full md:hidden mt-1 flex-shrink-0 relative z-10" 
+              style={{ minWidth: '4px', minHeight: '80px' }}
+              initial={{ scaleY: 0, opacity: 0 }}
+              whileInView={{ scaleY: 1, opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             ></motion.div>
@@ -99,7 +100,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-card">
+      <section className="py-16 px-4 bg-card/40 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6" data-testid="text-about-title">Sobre Nós</h2>
           <p className="text-lg text-muted-foreground mb-8" data-testid="text-about-content">

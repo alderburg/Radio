@@ -74,7 +74,7 @@ export default function Programacao() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-background">
+      <section className="py-16 px-4 bg-background/40 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 overflow-x-auto">
             <div className="flex gap-2 min-w-max justify-center pb-4">
