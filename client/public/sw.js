@@ -2,8 +2,7 @@ const CACHE_NAME = 'aperte-play-v1';
 const urlsToCache = [
   '/',
   '/logo-aperte-play-color.png',
-  '/logo-aperte-play-white.png',
-  '/favicon.png'
+  '/logo-aperte-play-white.png'
 ];
 
 self.addEventListener('install', (event) => {
