@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { usePWAInstall } from '@/hooks/usePWAInstall';
-import logoColor from '/logo-aperte-play-color.png?url';
+import logoColor from '/favicon.png?url';
 
 export default function ComingSoon() {
   const { isInstallable, isInstalled, installApp } = usePWAInstall();
