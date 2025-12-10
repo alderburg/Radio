@@ -46,7 +46,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audioRef.current.src = 'http://186.250.8.32:6750/stream';
+      audioRef.current.src = '186.250.8.32:6750/stream';
       audioRef.current.play().catch(err => {
         console.log('Audio play error:', err);
       });
