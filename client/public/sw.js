@@ -1,7 +1,7 @@
-const CACHE_NAME = 'aperte-play-v1';
+const CACHE_NAME = 'aperte-play-v2';
 const urlsToCache = [
   '/',
-  '/logo-aperte-play-color.png',
+  '/favicon.png',
   '/logo-aperte-play-white.png'
 ];
 
