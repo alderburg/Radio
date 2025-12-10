@@ -4,7 +4,7 @@
   "description": "A rádio que conecta você com boa música, notícias e entretenimento. Ouça ao vivo!",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#0f172a",
   "theme_color": "#7c3aed",
   "orientation": "portrait",
   "icons": [

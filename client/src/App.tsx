@@ -57,7 +57,7 @@ function ComingSoonLayout() {
 
   if (isComingSoonPage) {
     return (
-      <div className="min-h-screen relative">
+      <div className="min-h-screen relative bg-slate-950">
         <Router />
         <BottomPlayer />
       </div>
