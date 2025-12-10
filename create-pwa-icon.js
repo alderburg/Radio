@@ -3,9 +3,9 @@ import sharp from 'sharp';
 
 async function createPWAIcon() {
   try {
-    // Carrega o favicon original
+    // Carrega o favicon original - reduzido para 55% do tamanho final
     const favicon = await sharp('client/public/favicon.png')
-      .resize(400, 400, { // Reduz para 70% do tamanho final (400/512)
+      .resize(280, 280, { // Reduzido de 400 para 280 (55% de 512)
         fit: 'contain',
         background: { r: 0, g: 0, b: 0, alpha: 0 }
       })
@@ -38,7 +38,7 @@ async function createPWAIcon() {
     })
     .composite([{
       input: await sharp('client/public/favicon.png')
-        .resize(150, 150, {
+        .resize(105, 105, { // Reduzido de 150 para 105 (55% de 192)
           fit: 'contain',
           background: { r: 0, g: 0, b: 0, alpha: 0 }
         })
