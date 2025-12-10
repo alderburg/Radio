@@ -1,9 +1,12 @@
-import { Radio, Calendar, Clock, Sparkles } from 'lucide-react';
+import { Radio, Clock, Sparkles, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { usePWAInstall } from '@/hooks/usePWAInstall';
 import logoColor from '/logo-aperte-play-color.png?url';
 
 export default function ComingSoon() {
+  const { isInstallable, isInstalled, installApp } = usePWAInstall();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4 pb-24 overflow-hidden relative">
@@ -91,12 +94,16 @@ export default function ComingSoon() {
             <p className="text-sm text-slate-400">Ouça nossa rádio 24 horas por dia, 7 dias por semana</p>
           </Card>
 
-          <Card className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-600/20 rounded-full mb-3">
-              <Sparkles className="h-6 w-6 text-blue-400" />
+          <Card 
+            className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center cursor-pointer hover:bg-slate-800/40 transition-colors"
+            onClick={installApp}
+            data-testid="card-install-app"
+          >
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-600/20 rounded-full mb-3">
+              <Download className="h-6 w-6 text-purple-400" />
             </div>
-            <h4 className="font-semibold text-white mb-2">Nova Interface</h4>
-            <p className="text-sm text-slate-400">Design moderno e navegação intuitiva em breve</p>
+            <h4 className="font-semibold text-white mb-2">Instalar App</h4>
+            <p className="text-sm text-slate-400">Clique aqui para instalar o app no seu celular</p>
           </Card>
 
           <Card className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center">
@@ -148,6 +155,7 @@ export default function ComingSoon() {
               YouTube
             </a>
           </div>
+
         </motion.div>
       </div>
     </div>
