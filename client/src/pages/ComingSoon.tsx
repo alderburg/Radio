@@ -117,32 +117,32 @@ export default function ComingSoon() {
           <p className="text-slate-400 text-xs md:text-sm mb-4">
             Acompanhe nossas redes sociais para ficar por dentro das novidades
           </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mb-6">
+          <div className="flex flex-row justify-center items-center gap-3 md:gap-4 mb-6">
             <a
               href="https://www.instagram.com/aperteoplayfm/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-purple-400 hover:text-purple-300 transition-colors"
+              className="text-purple-400 hover:text-purple-300 transition-colors text-sm md:text-base"
               data-testid="link-instagram"
             >
               Instagram
             </a>
-            <span className="hidden sm:inline text-slate-600">|</span>
+            <span className="text-slate-600">|</span>
             <a
               href="https://www.facebook.com/people/Aperte-O-Play/100094220708639/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 transition-colors"
+              className="text-blue-400 hover:text-blue-300 transition-colors text-sm md:text-base"
               data-testid="link-facebook"
             >
               Facebook
             </a>
-            <span className="hidden sm:inline text-slate-600">|</span>
+            <span className="text-slate-600">|</span>
             <a
               href="https://www.youtube.com/@aperteoplayfm"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-red-400 hover:text-red-300 transition-colors"
+              className="text-red-400 hover:text-red-300 transition-colors text-sm md:text-base"
               data-testid="link-youtube"
             >
               YouTube
