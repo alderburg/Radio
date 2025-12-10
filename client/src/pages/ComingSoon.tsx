@@ -60,7 +60,7 @@ export default function ComingSoon() {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-6 mb-8 md:mb-12"
+            className="flex flex-row items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1 }}
@@ -69,12 +69,7 @@ export default function ComingSoon() {
               <Radio className="h-4 w-4 md:h-5 md:w-5" />
               <span className="font-semibold text-sm md:text-base">87.9 MHz</span>
             </div>
-            <div className="hidden sm:block h-1 w-1 rounded-full bg-slate-600"></div>
-            <div className="flex items-center gap-2 text-slate-400">
-              <Calendar className="h-4 w-4 md:h-5 md:w-5" />
-              <span className="text-xs md:text-sm">Lançamento em breve</span>
-            </div>
-            <div className="hidden sm:block h-1 w-1 rounded-full bg-slate-600"></div>
+            <div className="h-1 w-1 rounded-full bg-slate-600"></div>
             <div className="flex items-center gap-2 text-slate-400">
               <Clock className="h-4 w-4 md:h-5 md:w-5" />
               <span className="text-xs md:text-sm">24h no ar</span>
