@@ -8,7 +8,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/stream", (req, res) => {
     const streamUrl = "http://186.250.8.32:6750/stream";
     
-    console.log("Proxying audio stream from:", streamUrl);
     
     const proxyReq = http.get(streamUrl, (proxyRes) => {
       // Passa os headers de content-type
@@ -19,14 +18,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Pipe do stream
       proxyRes.pipe(res);
       
-      proxyRes.on("error", (err) => {
-        console.error("Proxy response error:", err);
+      proxyRes.on("error", () => {
         res.status(500).end();
       });
     });
     
-    proxyReq.on("error", (err) => {
-      console.error("Proxy request error:", err);
+    proxyReq.on("error", () => {
       res.status(500).json({ error: "Failed to connect to stream" });
     });
     
