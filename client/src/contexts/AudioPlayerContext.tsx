@@ -89,7 +89,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      const streamUrl = 'http://186.250.8.32:6750/stream';
+      const streamUrl = '/api/stream';
       console.log('Setting audio source to:', streamUrl);
       audioRef.current.src = streamUrl;
       
