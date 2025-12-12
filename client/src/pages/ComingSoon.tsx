@@ -1,12 +1,9 @@
 import { Radio, Clock, Sparkles, Download } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { usePWAInstall } from '@/hooks/usePWAInstall';
-import logoColor from '/logo-aperte-play-color.png?url';
 
 export default function ComingSoon() {
-  const { isInstallable, isInstalled, installApp } = usePWAInstall();
+  const { installApp } = usePWAInstall();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4 pb-24 overflow-hidden relative">
@@ -16,58 +13,30 @@ export default function ComingSoon() {
       </div>
 
       <div className="max-w-5xl w-full relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-8"
-        >
+        <div className="text-center mb-8 animate-fade-in">
           <div className="flex justify-center mb-4 md:mb-6">
-            <motion.img
-              src={logoColor}
+            <img
+              src="/logo-aperte-play-color.png"
               alt="Aperte o Play FM"
               className="h-20 md:h-32 w-auto"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
             />
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="inline-flex items-center gap-2 bg-purple-600/20 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-purple-500/30 mb-4 md:mb-6"
-          >
+          <div className="inline-flex items-center gap-2 bg-purple-600/20 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-purple-500/30 mb-4 md:mb-6">
             <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-purple-400" />
             <span className="text-xs md:text-sm font-semibold text-purple-300">NOVIDADE</span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            className="text-2xl sm:text-3xl md:text-6xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent px-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
+          <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent px-2">
             Novo Site em Breve!
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            className="text-base md:text-xl text-slate-300 mb-6 md:mb-8 max-w-2xl mx-auto px-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
+          <p className="text-base md:text-xl text-slate-300 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
             Estamos preparando uma experiência incrível para você! 
             Enquanto isso, curta nossa programação ao vivo.
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="flex flex-row items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-          >
+          <div className="flex flex-row items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12">
             <div className="flex items-center gap-2 text-purple-400">
               <Radio className="h-4 w-4 md:h-5 md:w-5" />
               <span className="font-semibold text-sm md:text-base">87.9 MHz</span>
@@ -77,15 +46,10 @@ export default function ComingSoon() {
               <Clock className="h-4 w-4 md:h-5 md:w-5" />
               <span className="text-xs md:text-sm">24h no ar</span>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.div
-          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-        >
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-600/20 rounded-full mb-3">
               <Radio className="h-6 w-6 text-purple-400" />
@@ -113,14 +77,9 @@ export default function ComingSoon() {
             <h4 className="font-semibold text-white mb-2">Programação Completa</h4>
             <p className="text-sm text-slate-400">Confira todos os nossos programas em breve</p>
           </Card>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="mt-6 md:mt-8 text-center pb-8 md:pb-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
-        >
+        <div className="mt-6 md:mt-8 text-center pb-8 md:pb-4">
           <p className="text-slate-400 text-xs md:text-sm mb-4">
             Acompanhe nossas redes sociais para ficar por dentro das novidades
           </p>
@@ -155,8 +114,7 @@ export default function ComingSoon() {
               YouTube
             </a>
           </div>
-
-        </motion.div>
+        </div>
       </div>
     </div>
   );
