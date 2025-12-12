@@ -1,6 +1,5 @@
-const CACHE_NAME = 'aperte-play-v2';
+const CACHE_NAME = 'aperte-play-v3';
 const urlsToCache = [
-  '/',
   '/favicon.png',
   '/logo-aperte-play-white.png'
 ];
@@ -29,6 +28,16 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith(fetch(event.request));
+    return;
+  }
+  
+  if (event.request.url.includes('/api/')) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
+  
   event.respondWith(
     fetch(event.request)
       .catch(() => caches.match(event.request))
