@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect, useLocation } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -21,16 +21,16 @@ import NotFound from "@/pages/not-found";
 function Router() {
   return (
     <Switch>
+      <Route path="/" component={ComingSoon} />
       <Route path="/em-breve" component={ComingSoon} />
-      <Route path="/" component={() => <Redirect to="/em-breve" />} />
       <Route path="/home-completa" component={Home} />
-      <Route path="/ao-vivo" component={() => <Redirect to="/em-breve" />} />
-      <Route path="/programacao" component={() => <Redirect to="/em-breve" />} />
-      <Route path="/apoiadores" component={() => <Redirect to="/em-breve" />} />
-      <Route path="/noticias" component={() => <Redirect to="/em-breve" />} />
-      <Route path="/noticia/:id" component={() => <Redirect to="/em-breve" />} />
-      <Route path="/apoie" component={() => <Redirect to="/em-breve" />} />
-      <Route path="/login" component={() => <Redirect to="/em-breve" />} />
+      <Route path="/ao-vivo" component={ComingSoon} />
+      <Route path="/programacao" component={ComingSoon} />
+      <Route path="/apoiadores" component={ComingSoon} />
+      <Route path="/noticias" component={ComingSoon} />
+      <Route path="/noticia/:id" component={ComingSoon} />
+      <Route path="/apoie" component={ComingSoon} />
+      <Route path="/login" component={ComingSoon} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -53,7 +53,8 @@ function App() {
 
 function ComingSoonLayout() {
   const [location] = useLocation();
-  const isComingSoonPage = location === '/em-breve' || location === '/';
+  const comingSoonPaths = ['/', '/em-breve', '/ao-vivo', '/programacao', '/apoiadores', '/noticias', '/apoie', '/login'];
+  const isComingSoonPage = comingSoonPaths.includes(location) || location.startsWith('/noticia/');
 
   if (isComingSoonPage) {
     return (
