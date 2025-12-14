@@ -73,26 +73,54 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/stream", (req, res) => {
     const streamUrl = "http://186.250.8.32:6750/stream";
     
+    const options = {
+      timeout: 30000,
+      headers: {
+        'User-Agent': 'ApertePlayFM/1.0',
+        'Accept': '*/*',
+        'Connection': 'keep-alive',
+      }
+    };
     
-    const proxyReq = http.get(streamUrl, (proxyRes) => {
-      // Passa os headers de content-type
+    const proxyReq = http.get(streamUrl, options, (proxyRes) => {
       res.setHeader("Content-Type", proxyRes.headers["content-type"] || "audio/mpeg");
-      res.setHeader("Cache-Control", "no-cache");
+      res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+      res.setHeader("Pragma", "no-cache");
       res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Connection", "keep-alive");
+      res.setHeader("Transfer-Encoding", "chunked");
       
-      // Pipe do stream
       proxyRes.pipe(res);
       
-      proxyRes.on("error", () => {
-        res.status(500).end();
+      proxyRes.on("error", (err) => {
+        console.log("Stream proxy error:", err.message);
+        if (!res.headersSent) {
+          res.status(500).end();
+        }
+      });
+      
+      proxyRes.on("end", () => {
+        console.log("Stream ended from source");
       });
     });
     
-    proxyReq.on("error", () => {
-      res.status(500).json({ error: "Failed to connect to stream" });
+    proxyReq.on("timeout", () => {
+      console.log("Stream proxy timeout");
+      proxyReq.destroy();
+    });
+    
+    proxyReq.on("error", (err) => {
+      console.log("Stream connection error:", err.message);
+      if (!res.headersSent) {
+        res.status(500).json({ error: "Failed to connect to stream" });
+      }
     });
     
     req.on("close", () => {
+      proxyReq.destroy();
+    });
+    
+    req.on("aborted", () => {
       proxyReq.destroy();
     });
   });
