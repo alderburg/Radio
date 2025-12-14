@@ -1,11 +1,11 @@
-import { Play, Pause, Volume2 } from 'lucide-react';
+import { Play, Pause, Volume2, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { useAudioPlayer } from '@/contexts/AudioPlayerContext';
 import defaultProgramImage from '@assets/5_1761918394755.png';
 
 export default function BottomPlayer() {
-  const { isPlaying, volume, currentProgram, togglePlay, setVolume } = useAudioPlayer();
+  const { isPlaying, isLoading, volume, currentProgram, togglePlay, setVolume } = useAudioPlayer();
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-slate-950 via-indigo-950 to-slate-900 border-t border-indigo-500/30 shadow-[0_-8px_32px_rgba(99,102,241,0.4),0_-4px_16px_rgba(168,85,247,0.3)] overflow-hidden">
@@ -47,10 +47,17 @@ export default function BottomPlayer() {
             <Button
               size="icon"
               onClick={togglePlay}
+              disabled={isLoading}
               className="hover-elevate active-elevate-2"
               data-testid="button-player-toggle"
             >
-              {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+              {isLoading ? (
+                <Loader2 className="h-5 w-5 animate-spin" />
+              ) : isPlaying ? (
+                <Pause className="h-5 w-5" />
+              ) : (
+                <Play className="h-5 w-5" />
+              )}
             </Button>
 
             <div className="hidden sm:flex items-center gap-2 w-32">

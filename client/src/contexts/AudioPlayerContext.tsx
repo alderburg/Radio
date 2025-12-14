@@ -8,6 +8,7 @@ interface CurrentProgram {
 
 interface AudioPlayerContextType {
   isPlaying: boolean;
+  isLoading: boolean;
   volume: number;
   currentProgram: CurrentProgram;
   togglePlay: () => void;
@@ -19,6 +20,7 @@ const AudioPlayerContext = createContext<AudioPlayerContextType | undefined>(und
 
 export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [volume, setVolumeState] = useState(70);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -98,6 +100,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     const handlePlaying = () => {
       console.log('Audio playing');
       reconnectAttemptsRef.current = 0;
+      setIsLoading(false);
       clearReconnectTimeout();
     };
 
@@ -150,9 +153,11 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
       audioRef.current.pause();
       audioRef.current.src = '';
       setIsPlaying(false);
+      setIsLoading(false);
       isPlayingRef.current = false;
       reconnectAttemptsRef.current = 0;
     } else {
+      setIsLoading(true);
       reconnectAttemptsRef.current = 0;
       const timestamp = Date.now();
       audioRef.current.src = `/api/stream?t=${timestamp}`;
@@ -163,6 +168,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
         })
         .catch(() => {
           setIsPlaying(false);
+          setIsLoading(false);
           isPlayingRef.current = false;
         });
     }
@@ -179,6 +185,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     <AudioPlayerContext.Provider
       value={{
         isPlaying,
+        isLoading,
         volume,
         currentProgram,
         togglePlay,
