@@ -22,39 +22,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
           const temp = Math.round(weather.main.temp);
           const humidity = weather.main.humidity;
           
-          // Hora atual no fuso horário de Brasília (UTC-3)
-          const now = new Date();
-          const brasiliaOffset = -3 * 60;
-          const localOffset = now.getTimezoneOffset();
-          const brasiliaTime = new Date(now.getTime() + (localOffset + brasiliaOffset) * 60000);
-          const hours = brasiliaTime.getHours().toString().padStart(2, '0');
-          const minutes = brasiliaTime.getMinutes().toString().padStart(2, '0');
-          const timeStr = `${hours}:${minutes}`;
-          
           res.setHeader("Content-Type", "text/html; charset=utf-8");
           res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
           res.setHeader("Pragma", "no-cache");
           res.setHeader("Expires", "0");
           
-          // Formato compatível com Salamandra - valores numéricos simples
-          res.send(`<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="300">
-<title>Clima - Pinheiro Machado</title>
-</head>
-<body>
-<div id="weather">
+          // Formato mínimo para Salamandra - apenas temperatura e umidade
+          res.send(`<html><body>
 <span id="temperature">${temp}</span>
 <span id="humidity">${humidity}</span>
-<span id="time">${timeStr}</span>
-</div>
-Temperatura: ${temp}
-Umidade: ${humidity}
-Hora: ${timeStr}
-</body>
-</html>`);
+</body></html>`);
         } catch (e) {
           res.status(500).send("Erro ao processar clima");
         }
