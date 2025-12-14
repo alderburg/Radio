@@ -6,6 +6,7 @@ import { storage } from "./storage";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Rota de clima para o Salamandra - retorna temperatura de Pinheiro Machado, RS
+  // Formato compatível com Beautiful Weather / currenweather.html
   app.get("/clima", (req, res) => {
     const apiKey = process.env.OPENWEATHER_API_KEY;
     const city = "Pinheiro Machado";
@@ -20,17 +21,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
           const weather = JSON.parse(data);
           const temp = Math.round(weather.main.temp);
           const humidity = weather.main.humidity;
-          const description = weather.weather[0].description;
+          
+          // Hora atual no fuso horário de Brasília (UTC-3)
+          const now = new Date();
+          const brasiliaOffset = -3 * 60;
+          const localOffset = now.getTimezoneOffset();
+          const brasiliaTime = new Date(now.getTime() + (localOffset + brasiliaOffset) * 60000);
+          const hours = brasiliaTime.getHours().toString().padStart(2, '0');
+          const minutes = brasiliaTime.getMinutes().toString().padStart(2, '0');
+          const timeStr = `${hours}:${minutes}`;
           
           res.setHeader("Content-Type", "text/html; charset=utf-8");
-          res.setHeader("Cache-Control", "no-cache");
+          res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+          res.setHeader("Pragma", "no-cache");
+          res.setHeader("Expires", "0");
+          
+          // Formato compatível com Salamandra - valores numéricos simples
           res.send(`<!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Clima</title></head>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="300">
+<title>Clima - Pinheiro Machado</title>
+</head>
 <body>
-<p>Temperatura: ${temp} graus</p>
-<p>Umidade: ${humidity}%</p>
-<p>Condicao: ${description}</p>
+<div id="weather">
+<span id="temperature">${temp}</span>
+<span id="humidity">${humidity}</span>
+<span id="time">${timeStr}</span>
+</div>
+Temperatura: ${temp}
+Umidade: ${humidity}
+Hora: ${timeStr}
 </body>
 </html>`);
         } catch (e) {
