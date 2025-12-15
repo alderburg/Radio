@@ -352,11 +352,14 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
 
   const setVolume = useCallback((newVolume: number) => {
     setVolumeState(newVolume);
-    const audio = getActiveAudio();
-    if (audio) {
-      audio.volume = newVolume / 100;
+    
+    if (primaryAudioRef.current && activeAudioRef.current === 'primary') {
+      primaryAudioRef.current.volume = newVolume / 100;
     }
-  }, [getActiveAudio]);
+    if (backupAudioRef.current && activeAudioRef.current === 'backup') {
+      backupAudioRef.current.volume = newVolume / 100;
+    }
+  }, []);
 
   return (
     <AudioPlayerContext.Provider
