@@ -107,7 +107,7 @@ export default function ComingSoon() {
           </Card>
 
           <a 
-            href="https://wa.me/5511999999999?text=Olá! Gostaria de pedir uma música na Aperte o Play FM!" 
+            href="https://wa.me/5553999416609?text=Olá! Gostaria de pedir uma música na Aperte o Play FM!" 
             target="_blank" 
             rel="noopener noreferrer"
             data-testid="card-whatsapp"
