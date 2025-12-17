@@ -86,26 +86,6 @@ export default function ComingSoon() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.4 }}
         >
-          <Card className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-600/20 rounded-full mb-3">
-              <Radio className="h-6 w-6 text-purple-400" />
-            </div>
-            <h4 className="font-semibold text-white mb-2">Transmissão ao Vivo</h4>
-            <p className="text-sm text-slate-400">Ouça nossa rádio 24 horas por dia, 7 dias por semana</p>
-          </Card>
-
-          <Card 
-            className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center cursor-pointer hover:bg-slate-800/40 transition-colors"
-            onClick={installApp}
-            data-testid="card-install-app"
-          >
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-600/20 rounded-full mb-3">
-              <Download className="h-6 w-6 text-purple-400" />
-            </div>
-            <h4 className="font-semibold text-white mb-2">Instalar App</h4>
-            <p className="text-sm text-slate-400">Clique aqui para instalar o app no seu celular</p>
-          </Card>
-
           <a 
             href="https://wa.me/5553999416609?text=Olá! Gostaria de pedir uma música na Aperte o Play FM!" 
             target="_blank" 
@@ -120,6 +100,26 @@ export default function ComingSoon() {
               <p className="text-sm text-slate-400">Clique aqui e peça sua música pelo WhatsApp</p>
             </Card>
           </a>
+
+          <Card 
+            className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center cursor-pointer hover:bg-slate-800/40 transition-colors"
+            onClick={installApp}
+            data-testid="card-install-app"
+          >
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-600/20 rounded-full mb-3">
+              <Download className="h-6 w-6 text-purple-400" />
+            </div>
+            <h4 className="font-semibold text-white mb-2">Instalar App</h4>
+            <p className="text-sm text-slate-400">Clique aqui para instalar o app no seu celular</p>
+          </Card>
+
+          <Card className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-600/20 rounded-full mb-3">
+              <Radio className="h-6 w-6 text-purple-400" />
+            </div>
+            <h4 className="font-semibold text-white mb-2">Transmissão ao Vivo</h4>
+            <p className="text-sm text-slate-400">Ouça nossa rádio 24 horas por dia, 7 dias por semana</p>
+          </Card>
         </motion.div>
 
         <motion.div
