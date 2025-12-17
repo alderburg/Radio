@@ -1,4 +1,4 @@
-import { Radio, Clock, Sparkles, Download } from 'lucide-react';
+import { Radio, Clock, Sparkles, Download, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -106,13 +106,20 @@ export default function ComingSoon() {
             <p className="text-sm text-slate-400">Clique aqui para instalar o app no seu celular</p>
           </Card>
 
-          <Card className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-green-600/20 rounded-full mb-3">
-              <Clock className="h-6 w-6 text-green-400" />
-            </div>
-            <h4 className="font-semibold text-white mb-2">Programação Completa</h4>
-            <p className="text-sm text-slate-400">Confira todos os nossos programas em breve</p>
-          </Card>
+          <a 
+            href="https://wa.me/5511999999999?text=Olá! Gostaria de pedir uma música na Aperte o Play FM!" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            data-testid="card-whatsapp"
+          >
+            <Card className="bg-slate-900/30 border-slate-700/30 backdrop-blur-sm p-6 text-center cursor-pointer hover:bg-slate-800/40 transition-colors">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-green-600/20 rounded-full mb-3">
+                <MessageCircle className="h-6 w-6 text-green-400" />
+              </div>
+              <h4 className="font-semibold text-white mb-2">Peça Sua Música</h4>
+              <p className="text-sm text-slate-400">Clique aqui e peça sua música pelo WhatsApp</p>
+            </Card>
+          </a>
         </motion.div>
 
         <motion.div
