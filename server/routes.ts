@@ -93,7 +93,7 @@ Hora: ${timeStr}
 
   // Proxy para o stream de áudio - evita problema de mixed content
   app.get("/api/stream", (req, res) => {
-    const streamUrl = "http://186.250.8.32:6750/stream";
+    const streamUrl = "http://201.71.50.161:6750/stream";
     
     const options = {
       timeout: 30000,
